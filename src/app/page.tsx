@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Section, Kicker, CTABanner } from '@/components/ui'
 import { MetierCard, ModeCard, ClientRefCard, NewsCard, ClientLogoStrip } from '@/components/Cards'
 import ContactCTAButton from '@/components/ContactCTAButton'
-import BodyMap from '@/components/BodyMap'
+import Body360Section from '@/components/Body360Section'
 import Icon from '@/components/Icons'
 import Picto from '@/components/pictos'
 import LogoShape from '@/components/brand/LogoShape'
@@ -19,6 +19,7 @@ import {
   ARNAUD,
   ADP_QUOTE,
   TELEDOK,
+  BPS_EXAMS,
 } from '@/lib/content'
 
 export default function Home() {
@@ -57,7 +58,12 @@ export default function Home() {
             </div>
 
             <Reveal from="scale" className="relative">
-              <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] shadow-xl shadow-ink-800/10 border border-mist/60">
+              {/* aspect-[4/3]: the source footage is native ~16:9 landscape —
+                  a portrait crop was cutting away most of the frame and
+                  losing the scene entirely. This keeps enough of the shot
+                  legible while still reading as a deliberate "card", and
+                  its shorter height balances against the text column. */}
+              <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-xl shadow-ink-800/10 border border-mist/60">
                 <video
                   className="absolute inset-0 w-full h-full object-cover"
                   autoPlay
@@ -133,29 +139,18 @@ export default function Home() {
       <section className="bg-paper-2 py-20 sm:py-28 relative overflow-hidden">
         <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
-            <Reveal from="left">
+          <Reveal>
+            <Body360Section exams={[...BPS_EXAMS]} ctaHref="/solutions" ctaLabel="Découvrir toutes nos solutions santé">
               <Kicker>Offre 360° santé</Kicker>
               <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-5 text-balance">
                 Réinventer la prévention santé, à 360°.
               </h2>
-              <p className="text-slate leading-relaxed mb-8 max-w-md">
+              <p className="text-slate leading-relaxed max-w-md">
                 Prévention, dépistage, santé mentale, vaccination : une couverture médicale complète,
                 conforme aux exigences médicales. Cliquez sur une fonction pour découvrir le dispositif associé.
               </p>
-              <div className="hidden lg:block">
-                <Link
-                  href="/solutions"
-                  className="inline-block px-6 py-3.5 rounded-full text-sm font-semibold bg-electric text-white hover:bg-electric-2 transition-colors"
-                >
-                  Découvrir toutes nos solutions santé
-                </Link>
-              </div>
-            </Reveal>
-            <Reveal from="scale" delay={100}>
-              <BodyMap />
-            </Reveal>
-          </div>
+            </Body360Section>
+          </Reveal>
         </Section>
       </section>
 
