@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-ibm), 'SF Mono', 'Courier New', monospace;
+}
+
+@theme {
+  /* Ink — deep navy near-black, base of the "Clinique Data-Driven" direction */
+  --color-ink: #060d18;
+  --color-ink-800: #0a1628;
+  --color-ink-700: #0f1f36;
+  --color-ink-600: #16304f;
+  --color-ink-line: #223752;
+
+  /* Electric — the Doxamed brand blue, derived from the logo */
+  --color-electric: #00a9e0;
+  --color-electric-2: #0090c4;
+  --color-electric-light: #5fd0f5;
+  --color-electric-dim: #0090c433;
+
+  /* Paper — cool off-white surfaces */
+  --color-paper: #f6f8fa;
+  --color-paper-2: #eef2f6;
+  --color-mist: #e3e9ef;
+  --color-slate: #52657a;
+  --color-slate-2: #7c8ea1;
+
+  /* Signal — reserved, used sparingly for alerts/RPS module */
+  --color-signal: #ff6b57;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink-800);
+  font-feature-settings: "ss01" 1, "cv01" 1;
+}
+
+::selection {
+  background: var(--color-electric);
+  color: white;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/*
+ * Pulse backdrop — a tiled cardiac-trace line, used across sections to
+ * reinforce the "clinical data" feel without borrowing the plain tech grid
+ * pattern. One tile = one stylised heartbeat (flat line, QRS spike, T-wave
+ * bump, flat line). The tile is twice as tall as the trace itself, so rows
+ * sit further apart (one line, then an empty gap the height of a line,
+ * rather than a dense stack) — faint, spaced, easy to miss unless you look.
+ * Two variants: white stroke for dark (ink) backgrounds, ink stroke for
+ * light backgrounds.
+ */
+.grid-backdrop {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='256'%3E%3Cpath d='M0,44 H60 L70,44 L78,20 L86,54 L94,28 L102,44 H160 L168,36 L176,44 H240' fill='none' stroke='rgba(255,255,255,0.10)' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-size: 240px 256px;
+  background-repeat: repeat;
+}
+
+.grid-backdrop-light {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='256'%3E%3Cpath d='M0,44 H60 L70,44 L78,20 L86,54 L94,28 L102,44 H160 L168,36 L176,44 H240' fill='none' stroke='rgba(6,13,24,0.08)' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-size: 240px 256px;
+  background-repeat: repeat;
+}
+
+/* Card hover treatments */
+.lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(6, 13, 24, 0.12);
+}
+
+.lift-dark:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 169, 224, 0.5) !important;
+  box-shadow: 0 16px 48px rgba(0, 169, 224, 0.12);
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+@keyframes ticker-count {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Focus visibility, kept crisp against both ink and paper backgrounds */
+:focus-visible {
+  outline: 2px solid var(--color-electric);
+  outline-offset: 3px;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
