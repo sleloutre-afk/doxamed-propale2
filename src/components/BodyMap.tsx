@@ -54,24 +54,47 @@ export function useBodyMapState(exams: Exam[]) {
     dotY: IMG_TOP + (e.y / 100) * IMG_HEIGHT,
   }))
 
-  // Sort top-to-bottom, then alternate left/right — an even split that
-  // keeps each column's vertical order matching the real anatomy while
-  // guaranteeing clean, non-overlapping spacing regardless of how the
-  // exams happen to cluster on the body.
+  // Sort top-to-bottom, then greedily assign each point to whichever side
+  // it's actually on (dotX vs. the vertical centerline) — falling back to
+  // the other side only once its target column is full. This keeps each
+  // column's vertical order matching the real anatomy *and* keeps a point
+  // on its real side whenever the balance constraint allows it (a plain
+  // alternation ignored dotX entirely, which is how "visuel" — left of
+  // center — ended up in the right column and vice versa for "auditif").
   const sortedByHeight = [...raw].sort((a, b) => a.dotY - b.dotY)
-  const left = sortedByHeight.filter((_, i) => i % 2 === 0)
-  const right = sortedByHeight.filter((_, i) => i % 2 === 1)
+  const leftTarget = Math.ceil(sortedByHeight.length / 2)
+  const rightTarget = sortedByHeight.length - leftTarget
+  const left: typeof raw = []
+  const right: typeof raw = []
+  for (const p of sortedByHeight) {
+    const prefersLeft = p.dotX < 50
+    if (prefersLeft && left.length < leftTarget) left.push(p)
+    else if (!prefersLeft && right.length < rightTarget) right.push(p)
+    else if (left.length < leftTarget) left.push(p)
+    else right.push(p)
+  }
 
-  const layoutColumn = (items: typeof raw, x: number) =>
-    new Map(
-      items.map((p, i) => [
-        p.exam.key,
-        {
-          pillX: x,
-          pillY: items.length > 1 ? LABEL_TOP_Y + (i / (items.length - 1)) * (LABEL_BOTTOM_Y - LABEL_TOP_Y) : (LABEL_TOP_Y + LABEL_BOTTOM_Y) / 2,
-        },
-      ])
-    )
+  // Within a column, stay as close as possible to each point's real height
+  // rather than spreading every item evenly across the full column — most
+  // exams cluster in the upper body, so even spacing was dragging the
+  // last item or two in a column (e.g. "vaccination") much further down
+  // than their real position, producing a long, misleading line. Instead,
+  // walk top to bottom and only push an item down when it would otherwise
+  // overlap the one above it.
+  const MIN_GAP = 12
+  const layoutColumn = (items: typeof raw, x: number) => {
+    const positions: number[] = []
+    items.forEach((p) => {
+      const naive = Math.min(Math.max(p.dotY, LABEL_TOP_Y), LABEL_BOTTOM_Y)
+      const prev = positions[positions.length - 1]
+      positions.push(prev === undefined ? naive : Math.max(naive, prev + MIN_GAP))
+    })
+    // If clustering pushed the stack past the bottom edge, shift the whole
+    // column back up rather than letting the last item run off the diagram.
+    const overflow = positions[positions.length - 1] - LABEL_BOTTOM_Y
+    if (overflow > 0) positions.forEach((_, i) => (positions[i] -= overflow))
+    return new Map(items.map((p, i) => [p.exam.key, { pillX: x, pillY: positions[i] }]))
+  }
 
   const pillByKey = new Map([...layoutColumn(left, LABEL_LEFT_X), ...layoutColumn(right, LABEL_RIGHT_X)])
 

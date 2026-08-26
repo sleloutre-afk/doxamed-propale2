@@ -27,21 +27,23 @@ export default function Home() {
     <>
       {/* HERO — fractionné : texte sur fond clair à gauche, cadre vidéo
           arrondi à droite (au lieu du plein cadre sombre de la Propale 1). */}
-      <section className="relative bg-paper overflow-hidden pt-32 sm:pt-40 pb-20 sm:pb-24">
+      <section className="relative bg-paper overflow-hidden pt-24 sm:pt-28 pb-20 sm:pb-24">
         <div className="absolute top-[-15%] right-[-8%] w-[540px] h-[540px] rounded-full bg-electric/10 blur-[130px] pointer-events-none" />
         <div className="absolute bottom-[-25%] left-[-10%] w-[380px] h-[380px] rounded-full bg-electric/[0.06] blur-[110px] pointer-events-none" />
 
         <Section className="relative">
-          <div className="grid lg:grid-cols-[1fr_0.92fr] gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-center">
             <div>
               <Kicker>Expert de la prévention santé par l&rsquo;innovation</Kicker>
-              <LogoShape className="h-14 sm:h-16 w-auto shrink-0 text-electric mb-4 animate-fade-up" />
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] font-semibold tracking-tight text-ink-800 text-balance animate-fade-up">
-                La santé <span className="text-electric-2">pour tous.</span>
-                <br />
-                Partout.
-              </h1>
-              <p className="mt-6 text-lg text-slate max-w-lg leading-relaxed animate-fade-up" style={{ animationDelay: '0.08s' }}>
+              <div className="flex items-center gap-4 sm:gap-5">
+                <LogoShape className="h-14 sm:h-16 w-auto shrink-0 text-electric animate-fade-up" />
+                <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] font-semibold tracking-tight text-ink-800 text-balance animate-fade-up">
+                  La santé <span className="text-electric-2">pour tous.</span>
+                  <br />
+                  Partout.
+                </h1>
+              </div>
+              <p className="mt-6 text-lg text-slate leading-relaxed animate-fade-up" style={{ animationDelay: '0.08s' }}>
                 Doxamed déploie des solutions de prévention, de dépistage et d&rsquo;accès aux soins
                 directement sur le lieu de travail et dans les territoires — pilotées par des médecins,
                 incarnées par nos infirmiers, servies par la donnée.
