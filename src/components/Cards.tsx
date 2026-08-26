@@ -15,37 +15,41 @@ export function MetierCard({ m }: { m: Metier }) {
   const isElectric = m.color === 'electric'
   const pictoOverride = METIER_PICTO_OVERRIDE[m.slug]
   return (
-    <Link
-      href={`/solutions/${m.slug}`}
-      className={`lift group relative flex flex-col rounded-2xl border p-7 sm:p-8 h-full overflow-hidden ${
-        isElectric ? 'bg-ink-800 border-ink-line text-white' : 'bg-white border-mist text-ink-800'
-      }`}
-    >
-      <div className={`absolute inset-0 grid-backdrop ${isElectric ? 'opacity-100' : 'grid-backdrop-light'} pointer-events-none`} />
-      <div className="relative flex items-start justify-between mb-8">
-        <span className={`font-mono-num text-xs ${isElectric ? 'text-white/40' : 'text-slate-2'}`}>{m.number}</span>
-        <div
-          className={`w-16 h-16 rounded-xl flex items-center justify-center ${
-            isElectric ? 'bg-electric/15 text-electric-light' : 'bg-electric-dim text-electric-2'
+    <Link href={`/solutions/${m.slug}`} className="group relative flex flex-col h-full pt-7">
+      {/* Circular badge, pinned so it overlaps the card's top edge */}
+      <div
+        className={`absolute -top-0 left-7 z-10 w-14 h-14 rounded-full flex items-center justify-center shadow-md transition-transform group-hover:-translate-y-1 ${
+          isElectric ? 'bg-electric text-white' : 'bg-white text-electric-2 border border-mist'
+        }`}
+      >
+        {pictoOverride ? <Picto name={pictoOverride} className="w-7 h-7" /> : <Icon name={m.icon as never} className="w-7 h-7" />}
+      </div>
+
+      <div
+        className={`lift relative flex flex-col flex-1 rounded-2xl border p-7 sm:p-8 pt-11 overflow-hidden ${
+          isElectric ? 'bg-ink-800 border-ink-line text-white' : 'bg-white border-mist text-ink-800'
+        }`}
+      >
+        <div className={`absolute inset-0 grid-backdrop ${isElectric ? 'opacity-100' : 'grid-backdrop-light'} pointer-events-none`} />
+        <span
+          aria-hidden="true"
+          className={`absolute -top-3 right-3 font-display text-[6.5rem] leading-none font-semibold select-none pointer-events-none ${
+            isElectric ? 'text-white/[0.07]' : 'text-ink-800/[0.05]'
           }`}
         >
-          {pictoOverride ? (
-            <Picto name={pictoOverride} className="w-9 h-9" />
-          ) : (
-            <Icon name={m.icon as never} className="w-9 h-9" />
-          )}
+          {m.number}
+        </span>
+        <div className="relative">
+          <p className={`text-[0.7rem] font-semibold uppercase tracking-[0.14em] mb-2 ${isElectric ? 'text-electric-light' : 'text-electric-2'}`}>
+            {m.short}
+          </p>
+          <h3 className="text-xl font-semibold tracking-tight mb-3 text-balance">{m.name}</h3>
+          <p className={`text-sm leading-relaxed mb-6 ${isElectric ? 'text-white/60' : 'text-slate'}`}>{m.pitch}</p>
         </div>
-      </div>
-      <div className="relative">
-        <p className={`text-[0.7rem] font-semibold uppercase tracking-[0.14em] mb-2 ${isElectric ? 'text-electric-light' : 'text-electric-2'}`}>
-          {m.short}
-        </p>
-        <h3 className="text-xl font-semibold tracking-tight mb-3 text-balance">{m.name}</h3>
-        <p className={`text-sm leading-relaxed mb-6 ${isElectric ? 'text-white/60' : 'text-slate'}`}>{m.pitch}</p>
-      </div>
-      <div className="relative mt-auto flex items-center gap-2 text-sm font-semibold">
-        <span className={isElectric ? 'text-electric-light' : 'text-electric-2'}>Découvrir</span>
-        <Icon name="arrowRight" className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isElectric ? 'text-electric-light' : 'text-electric-2'}`} />
+        <div className="relative mt-auto flex items-center gap-2 text-sm font-semibold">
+          <span className={isElectric ? 'text-electric-light' : 'text-electric-2'}>Découvrir</span>
+          <Icon name="arrowRight" className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${isElectric ? 'text-electric-light' : 'text-electric-2'}`} />
+        </div>
       </div>
     </Link>
   )
@@ -78,10 +82,10 @@ export function ModeCard({ m }: { m: Mode }) {
         className="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none"
       />
       <div className="relative z-10 flex flex-col h-full">
-        <div className="relative w-28 h-28 rounded-2xl overflow-hidden mb-6">
-          <div className="absolute inset-0 bg-white" />
-          <div className="absolute inset-0 bg-electric-dim text-electric-2 flex items-center justify-center">
-            <Picto name={MODE_PICTOS[m.slug]} className="w-12 h-12" />
+        <div className="relative w-20 h-20 mb-6">
+          <span className="absolute -inset-2 rounded-full border border-dashed border-electric/30 group-hover:border-electric/60 transition-colors" />
+          <div className="absolute inset-0 rounded-full bg-electric-dim text-electric-2 flex items-center justify-center">
+            <Picto name={MODE_PICTOS[m.slug]} className="w-9 h-9" />
           </div>
         </div>
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-electric-2 mb-1.5">{m.short}</p>
