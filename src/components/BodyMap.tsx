@@ -28,12 +28,11 @@ const ORBIT_RX = 41
 const ORBIT_RY = 45
 
 /**
- * `dark`: the source photos (public/body/*.png) have an opaque black
- * background rather than transparency. On a dark (ink) section we render
- * them with `mix-blend-mode: screen`, which drops pure black to fully
- * transparent and lets the blue glow float directly on the page background —
- * no image editing required. Only use `dark` when the wrapping section is on
- * bg-ink-800 (or similarly dark); on a light section the black would show.
+ * `dark`: the source photos (public/body/*.png) were re-processed to real
+ * RGBA transparency (alpha derived from pixel brightness, replicating the
+ * old mix-blend-mode:screen-on-black look but as an actual alpha channel),
+ * so they composite cleanly over both light and dark section backgrounds.
+ * `dark` now only tunes the surrounding UI chrome (labels, lines, card).
  *
  * `exams`: defaults to the full 10-item "offre 360°" set; pass a filtered
  * subset (e.g. the 8-item BPS parcours) where the page is product-specific.
@@ -100,7 +99,7 @@ export default function BodyMap({
             width: `${IMG_WIDTH}%`,
             height: `${IMG_HEIGHT}%`,
             objectFit: 'contain',
-            ...(dark ? { mixBlendMode: 'screen' } : { filter: 'drop-shadow(0 20px 40px rgba(0,169,224,0.15))' }),
+            filter: 'drop-shadow(0 20px 40px rgba(0,169,224,0.15))',
           }}
           draggable={false}
         />

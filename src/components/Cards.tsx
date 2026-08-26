@@ -18,7 +18,7 @@ export function MetierCard({ m }: { m: Metier }) {
     <Link href={`/solutions/${m.slug}`} className="group relative flex flex-col h-full pt-7">
       {/* Circular badge, pinned so it overlaps the card's top edge */}
       <div
-        className={`absolute -top-0 left-7 z-10 w-14 h-14 rounded-full flex items-center justify-center shadow-md transition-transform group-hover:-translate-y-1 ${
+        className={`absolute -top-0 left-7 z-10 w-14 h-14 rounded-full ring-4 ring-paper flex items-center justify-center shadow-md transition-transform group-hover:-translate-y-1 ${
           isElectric ? 'bg-electric text-white' : 'bg-white text-electric-2 border border-mist'
         }`}
       >
@@ -27,14 +27,14 @@ export function MetierCard({ m }: { m: Metier }) {
 
       <div
         className={`lift relative flex flex-col flex-1 rounded-2xl border p-7 sm:p-8 pt-11 overflow-hidden ${
-          isElectric ? 'bg-ink-800 border-ink-line text-white' : 'bg-white border-mist text-ink-800'
+          isElectric ? 'bg-electric border-electric-2 text-white' : 'bg-white border-mist text-ink-800'
         }`}
       >
-        <div className={`absolute inset-0 grid-backdrop ${isElectric ? 'opacity-100' : 'grid-backdrop-light'} pointer-events-none`} />
+        <div className={`absolute inset-0 ${isElectric ? 'grid-backdrop opacity-40' : 'grid-backdrop-light'} pointer-events-none`} />
         <span
           aria-hidden="true"
           className={`absolute -top-3 right-3 font-mono-num text-[6.5rem] leading-none font-semibold select-none pointer-events-none ${
-            isElectric ? 'text-white/[0.07]' : 'text-ink-800/[0.05]'
+            isElectric ? 'text-white/[0.14]' : 'text-ink-800/[0.05]'
           }`}
         >
           {m.number}
@@ -73,7 +73,7 @@ export function ModeCard({ m }: { m: Mode }) {
   return (
     <Link
       href={`/modes-intervention/${m.slug}`}
-      className="lift group relative flex flex-col rounded-2xl border border-mist bg-white p-7 h-full overflow-hidden"
+      className="lift group relative flex flex-col rounded-2xl border border-mist bg-white shadow-sm p-7 h-full overflow-hidden"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

@@ -43,22 +43,20 @@ export default function Navbar() {
     }
   }, [searchOpen])
 
-  // Every page opens on a dark (bg-ink-800) hero, so an unscrolled header can
-  // safely go transparent with light text; it only needs to become opaque
-  // once scrolled past the hero, or while the mobile menu is open. The
-  // search dropdown floats over it like the nav mega-menus do, so it
-  // doesn't need to force the header solid.
-  const solid = scrolled || mobileOpen
+  // The whole site now stays on light backgrounds (no dark hero to sit
+  // transparently over), so the header is permanently solid — only its
+  // shadow/border strengthens once scrolled, as a subtle depth cue.
+  const scrolledStyle = scrolled || mobileOpen
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        solid ? 'bg-paper/90 backdrop-blur-md border-b border-mist' : 'bg-transparent border-b border-transparent'
+      className={`fixed top-0 inset-x-0 z-50 bg-paper/95 backdrop-blur-md transition-shadow duration-300 border-b ${
+        scrolledStyle ? 'border-mist shadow-sm shadow-ink-800/[0.03]' : 'border-mist/60'
       }`}
     >
       <nav className="max-w-[1400px] mx-auto px-5 sm:px-8 h-[68px] flex items-center justify-between">
         <Link href="/" className="shrink-0" onClick={() => setOpenMenu(null)}>
-          <Logo variant={solid ? 'dark' : 'light'} />
+          <Logo variant="dark" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-1" onMouseLeave={() => setOpenMenu(null)}>
@@ -67,13 +65,9 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 className={`px-4 py-2.5 text-[0.85rem] font-medium rounded-full transition-colors ${
-                  solid
-                    ? pathname === item.href || pathname.startsWith(item.href + '/')
-                      ? 'text-electric-2'
-                      : 'text-slate hover:text-ink-800'
-                    : pathname === item.href || pathname.startsWith(item.href + '/')
-                      ? 'text-electric-light'
-                      : 'text-white/70 hover:text-white'
+                  pathname === item.href || pathname.startsWith(item.href + '/')
+                    ? 'text-electric-2'
+                    : 'text-slate hover:text-ink-800'
                 }`}
               >
                 {item.label}
@@ -104,11 +98,11 @@ export default function Navbar() {
           {/* Language switch and search — visual only for now, pending client
               validation of this design direction before wiring EN pages /
               real search. */}
-          <div className={`flex items-center gap-3 ml-2 pl-3 border-l ${solid ? 'border-mist' : 'border-white/20'}`}>
+          <div className="flex items-center gap-3 ml-2 pl-3 border-l border-mist">
             <div className="flex items-center gap-1 text-[0.8rem] font-medium select-none">
-              <span className={solid ? 'text-ink-800' : 'text-white'}>FR</span>
-              <span className={solid ? 'text-slate-2' : 'text-white/30'}>/</span>
-              <span className={solid ? 'text-slate-2' : 'text-white/50'}>EN</span>
+              <span className="text-ink-800">FR</span>
+              <span className="text-slate-2">/</span>
+              <span className="text-slate-2">EN</span>
             </div>
             <div className="relative" ref={searchRef}>
               <button
@@ -116,11 +110,7 @@ export default function Navbar() {
                 aria-label={searchOpen ? 'Fermer la recherche' : 'Rechercher'}
                 onClick={() => setSearchOpen((v) => !v)}
                 className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
-                  searchOpen
-                    ? 'text-electric-2 bg-electric-dim'
-                    : solid
-                      ? 'text-slate hover:text-ink-800 hover:bg-paper-2'
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  searchOpen ? 'text-electric-2 bg-electric-dim' : 'text-slate hover:text-ink-800 hover:bg-paper-2'
                 }`}
               >
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -156,7 +146,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className={`lg:hidden w-10 h-10 flex items-center justify-center transition-colors ${solid ? 'text-ink-800' : 'text-white'}`}
+          className="lg:hidden w-10 h-10 flex items-center justify-center text-ink-800"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Ouvrir le menu"
         >

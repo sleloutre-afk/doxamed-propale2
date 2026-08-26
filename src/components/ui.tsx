@@ -159,22 +159,22 @@ export function CTABanner({
 }) {
   return (
     <Section className="py-20 sm:py-28">
-      <div className="relative rounded-3xl bg-ink-800 text-white overflow-hidden px-6 sm:px-14 py-14 sm:py-16">
-        <div className="absolute inset-0 grid-backdrop opacity-70" />
+      <div className="relative rounded-3xl bg-paper-2 border border-mist overflow-hidden px-6 sm:px-14 py-14 sm:py-16">
+        <div className="absolute inset-0 grid-backdrop-light opacity-70" />
         {/* Orbit-motif rings, echoing the BodyMap diagram elsewhere on the site */}
-        <span className="absolute -top-24 -right-24 w-[340px] h-[340px] rounded-full border border-electric/20 pointer-events-none" />
-        <span className="absolute -top-8 -right-8 w-[220px] h-[220px] rounded-full border border-dashed border-electric/25 pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-electric/15 blur-[100px] rounded-full" />
+        <span className="absolute -top-24 -right-24 w-[340px] h-[340px] rounded-full border border-electric/25 pointer-events-none" />
+        <span className="absolute -top-8 -right-8 w-[220px] h-[220px] rounded-full border border-dashed border-electric/30 pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-electric/10 blur-[100px] rounded-full" />
         <div className="relative flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-16">
           <div className="flex-1">
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-balance max-w-xl">{title}</h2>
-            <p className="mt-4 text-white/60 max-w-lg">{lead}</p>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 text-balance max-w-xl">{title}</h2>
+            <p className="mt-4 text-slate max-w-lg">{lead}</p>
           </div>
           <div className="flex items-center gap-3 flex-wrap lg:shrink-0">
             <ContactCTAButton />
             <Link
               href="/references"
-              className="px-6 py-3.5 rounded-full border border-white/20 text-sm font-semibold text-white/80 hover:border-white/40 hover:text-white transition-colors"
+              className="px-6 py-3.5 rounded-full border border-mist bg-white text-sm font-semibold text-ink-800 hover:border-electric hover:text-electric-2 transition-colors"
             >
               Voir nos références
             </Link>
