@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { METIERS, MODES, NEWS } from '@/lib/content'
 
-const BASE = 'https://propale1.doxamed-refonte.fr'
+const BASE = 'https://propale2.doxamed-refonte.fr'
 
 const STATIC_ROUTES = [
   '',

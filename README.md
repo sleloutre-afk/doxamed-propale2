@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Le site tourne sur **http://localhost:3081**.
+Le site tourne sur **http://localhost:3082**.
 
 Build de production (vérifie qu'il n'y a aucune erreur) :
 
