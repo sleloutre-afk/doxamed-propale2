@@ -10,8 +10,16 @@ type Exam = (typeof BPS_EXAMS)[number]
 // convert each exam's image-relative (e.x, e.y) anchor into a coordinate
 // on the *outer* diagram, so the leader lines and orbit pills line up
 // with the real anatomical position regardless of viewport width.
-const IMG_LEFT = 30
-const IMG_WIDTH = 40
+//
+// The box's aspect ratio is deliberately matched to the source PNGs'
+// real intrinsic ratio (1568×2650 ⇒ ~0.592, in an aspect-[4/5] outer
+// container). With `object-fit: contain`, any mismatch here letterboxes
+// the rendered image inside the box — shrinking it off-center and
+// silently breaking the 1:1 mapping between (e.x, e.y) and the actual
+// anatomy. Keep IMG_WIDTH = IMG_HEIGHT × 0.74 (≈ image ratio × 1.25
+// outer-container correction) if this box or the source images change.
+const IMG_LEFT = 16
+const IMG_WIDTH = 68
 const IMG_TOP = 4
 const IMG_HEIGHT = 92
 

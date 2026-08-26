@@ -33,7 +33,7 @@ export function MetierCard({ m }: { m: Metier }) {
         <div className={`absolute inset-0 grid-backdrop ${isElectric ? 'opacity-100' : 'grid-backdrop-light'} pointer-events-none`} />
         <span
           aria-hidden="true"
-          className={`absolute -top-3 right-3 font-display text-[6.5rem] leading-none font-semibold select-none pointer-events-none ${
+          className={`absolute -top-3 right-3 font-mono-num text-[6.5rem] leading-none font-semibold select-none pointer-events-none ${
             isElectric ? 'text-white/[0.07]' : 'text-ink-800/[0.05]'
           }`}
         >

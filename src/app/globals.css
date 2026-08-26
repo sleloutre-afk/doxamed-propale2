@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-figtree), system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-ibm), 'SF Mono', 'Courier New', monospace;
 }
 
 @theme {
@@ -54,6 +54,7 @@ html {
 body {
   background: var(--color-paper);
   color: var(--color-ink-800);
+  font-feature-settings: "ss01" 1, "cv01" 1;
 }
 
 ::selection {
@@ -61,38 +62,27 @@ body {
   color: white;
 }
 
-/* Warm display-serif treatment for stat numerals — replaces the mono/
-   tabular "clinical data" numeral style from Propale 1. Class name kept
-   so every StatStrip / Timeline / counter usage across the site picks
-   this up automatically. */
 .font-mono-num {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-variant-numeric: oldstyle-nums;
-  letter-spacing: -0.01em;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
 
 /*
- * Warm backdrop — a soft, hand-drawn-feeling arc/dot motif, replacing the
- * ECG "cardiac trace" pattern from Propale 1. Evokes a gentle wave / a
- * caring gesture rather than clinical data. Two variants kept under the
- * same class names: white stroke for dark (ink) backgrounds, ink stroke
- * for light backgrounds.
+ * Pulse backdrop — a tiled cardiac-trace line (Propale 1's original
+ * pattern, restored at the client's request). Two variants: white stroke
+ * for dark (ink) backgrounds, ink stroke for light backgrounds.
  */
 .grid-backdrop {
-  background-image:
-    radial-gradient(circle at 30px 30px, rgba(255,255,255,0.14) 2.5px, transparent 2.5px),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160'%3E%3Cpath d='M-20,80 Q40,20 100,80 T220,80' fill='none' stroke='rgba(255,255,255,0.10)' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-size: 60px 60px, 240px 160px;
-  background-repeat: repeat, repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='256'%3E%3Cpath d='M0,44 H60 L70,44 L78,20 L86,54 L94,28 L102,44 H160 L168,36 L176,44 H240' fill='none' stroke='rgba(255,255,255,0.10)' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-size: 240px 256px;
+  background-repeat: repeat;
 }
 
 .grid-backdrop-light {
-  background-image:
-    radial-gradient(circle at 30px 30px, rgba(6,13,24,0.10) 2.5px, transparent 2.5px),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160'%3E%3Cpath d='M-20,80 Q40,20 100,80 T220,80' fill='none' stroke='rgba(6,13,24,0.08)' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-size: 60px 60px, 240px 160px;
-  background-repeat: repeat, repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='256'%3E%3Cpath d='M0,44 H60 L70,44 L78,20 L86,54 L94,28 L102,44 H160 L168,36 L176,44 H240' fill='none' stroke='rgba(6,13,24,0.08)' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-size: 240px 256px;
+  background-repeat: repeat;
 }
 
 /* Card hover treatments */

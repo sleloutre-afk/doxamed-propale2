@@ -55,8 +55,8 @@ export default function Home() {
               <Kicker dark>Expert de la prévention santé par l&rsquo;innovation</Kicker>
               <div className="flex items-center gap-4 sm:gap-5">
                 <LogoShape className="h-28 sm:h-32 lg:h-[9.5rem] w-auto shrink-0 text-electric animate-fade-up" />
-                <h1 className="text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-7xl font-display font-semibold tracking-tight text-balance animate-fade-up">
-                  La santé <span className="text-electric-light italic">pour tous.</span>
+                <h1 className="text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-7xl font-semibold tracking-tight text-balance animate-fade-up">
+                  La santé <span className="text-electric-light">pour tous.</span>
                   <br />
                   Partout.
                 </h1>
@@ -271,7 +271,7 @@ export default function Home() {
       <Section className="py-20 sm:py-28">
         <Reveal from="scale">
           <div className="relative overflow-hidden rounded-3xl border border-mist bg-white p-8 sm:p-14">
-            <span aria-hidden="true" className="pointer-events-none absolute -top-6 right-8 font-display text-[9rem] leading-none text-electric-dim select-none">
+            <span aria-hidden="true" className="pointer-events-none absolute -top-6 right-8 font-mono-num text-[9rem] leading-none text-electric-dim select-none">
               &rdquo;
             </span>
             <div className="relative grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-center">

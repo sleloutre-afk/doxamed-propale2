@@ -1,22 +1,17 @@
 import type { Metadata } from 'next'
-import { Figtree, Fraunces } from 'next/font/google'
+import { Inter, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import FloatingCTA from '@/components/FloatingCTA'
 import { ContactModalProvider } from '@/components/ContactModalProvider'
 
-// "Warm Human Care" direction: Figtree (rounded humanist sans) for body/UI,
-// Fraunces (warm soft-curved serif) for display headlines and numerals —
-// replacing Propale 1's Inter + IBM Plex Mono "Clinique Data-Driven" pairing.
-const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree', display: 'swap' })
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-fraunces',
-  display: 'swap',
-})
+// Propale 2 keeps Propale 1's Inter + IBM Plex Mono typography — the
+// client asked to revert the earlier Figtree/Fraunces test. All
+// differentiation vs Propale 1 happens through layout structure,
+// graphic treatment and motion (see components), not typography or color.
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const plexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-mono-ibm', display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://propale2.doxamed-refonte.fr'),
@@ -31,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${figtree.variable} ${fraunces.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${plexMono.variable}`}>
       <body className="font-sans antialiased">
         <ContactModalProvider>
           <Navbar />
