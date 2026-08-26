@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Icon from './Icons'
 import Picto from './pictos'
+import CountUp from './CountUp'
 import type { Metier, Mode, ClientRef, NewsItem } from '@/lib/content'
 
 // Cards 2 (Risques psychosociaux) and 3 (Dépistage & vaccination) use the
@@ -108,23 +109,26 @@ export function ModeCard({ m }: { m: Mode }) {
 
 export function ClientRefCard({ c }: { c: ClientRef }) {
   return (
-    <div className="lift rounded-2xl border border-mist bg-white p-6 sm:p-7">
-      <div className="flex items-start justify-between mb-5">
+    <div className="lift relative rounded-2xl border border-mist bg-white p-6 sm:p-7 overflow-hidden">
+      <div className="absolute inset-0 grid-backdrop-light pointer-events-none" />
+      <div className="relative flex items-start justify-between mb-5">
         <div>
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-electric-2">{c.category}</p>
           <h3 className="text-lg font-semibold text-ink-800 mt-1">{c.name}</h3>
         </div>
-        <span className="text-xs text-slate-2 whitespace-nowrap">{c.since}</span>
+        <span className="text-xs text-slate-2 whitespace-nowrap px-2.5 py-1 rounded-full bg-paper-2 border border-mist">{c.since}</span>
       </div>
       {c.logo && (
-        <div className="flex justify-center mb-5">
+        <div className="relative flex justify-center mb-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={c.logo} alt={c.name} className="h-10 w-auto max-w-[180px] object-contain" />
         </div>
       )}
-      <p className="text-sm text-slate leading-relaxed mb-6">{c.detail}</p>
-      <div className="flex items-baseline gap-2 pt-4 border-t border-mist">
-        <span className="font-mono-num text-2xl font-semibold text-ink-800">{c.metric.value}</span>
+      <p className="relative text-sm text-slate leading-relaxed mb-6">{c.detail}</p>
+      <div className="relative flex items-baseline gap-2 pt-4 border-t border-mist">
+        <span className="font-mono-num text-2xl font-semibold text-ink-800">
+          <CountUp value={c.metric.value} />
+        </span>
         <span className="text-xs text-slate">{c.metric.label}</span>
       </div>
     </div>
@@ -163,11 +167,16 @@ const NEWS_TYPE_PICTO: Record<NewsItem['type'], 'whitepaper' | 'medias' | 'socia
 export function NewsCard({ n }: { n: NewsItem }) {
   return (
     <Link href={`/actualites/${n.slug}`} className="lift group flex flex-col rounded-2xl border border-mist bg-white overflow-hidden h-full">
-      <div className="aspect-[16/10] bg-paper-2 flex items-center justify-center relative overflow-hidden">
+      <div className="aspect-[16/10] bg-paper-2 relative overflow-hidden">
         <div className="absolute inset-0 grid-backdrop-light opacity-60" />
-        <Picto name={NEWS_TYPE_PICTO[n.type]} className="w-24 h-24 text-electric-2/50 relative" />
+        <Picto name={NEWS_TYPE_PICTO[n.type]} className="absolute inset-0 m-auto w-20 h-20 text-electric-2/30" />
       </div>
-      <div className="p-5 sm:p-6 flex flex-col flex-1">
+      <div className="relative px-5 sm:px-6">
+        <div className="absolute -top-7 left-5 sm:left-6 z-10 w-14 h-14 rounded-full ring-4 ring-white bg-white border border-mist shadow-md flex items-center justify-center transition-transform group-hover:-translate-y-1">
+          <Picto name={NEWS_TYPE_PICTO[n.type]} className="w-6 h-6 text-electric-2" />
+        </div>
+      </div>
+      <div className="p-5 sm:p-6 pt-10 flex flex-col flex-1">
         <div className="flex items-center gap-2 mb-3">
           <NewsTypeBadge type={n.type} />
           <span className="text-xs text-slate-2">{n.date}</span>
@@ -208,9 +217,9 @@ export function PersonCard({
     <div className="rounded-2xl border border-mist bg-white p-6">
       {photo ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={photo} alt={name} className="w-12 h-12 rounded-full object-cover mb-4" />
+        <img src={photo} alt={name} className="w-12 h-12 rounded-full object-cover ring-4 ring-paper mb-4" />
       ) : (
-        <div className="w-12 h-12 rounded-full bg-ink-800 text-white flex items-center justify-center font-semibold text-sm mb-4">
+        <div className="w-12 h-12 rounded-full bg-electric-dim text-electric-2 ring-4 ring-paper flex items-center justify-center font-semibold text-sm mb-4">
           {initials}
         </div>
       )}

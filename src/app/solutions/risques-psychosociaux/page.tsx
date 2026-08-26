@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { PageHero, Section, Kicker, StatStrip, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import Icon from '@/components/Icons'
+import Reveal from '@/components/Reveal'
 
 export const metadata: Metadata = {
   title: 'Prévention des risques psychosociaux',
@@ -53,19 +54,30 @@ export default function RPSPage() {
       </Section>
 
       <Section className="py-20 sm:py-24">
-        <Kicker>Notre offre</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-          Une offre basée sur le déploiement de 4 modules complémentaires.
-        </h2>
+        <Reveal>
+          <Kicker>Notre offre</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+            Une offre basée sur le déploiement de 4 modules complémentaires.
+          </h2>
+        </Reveal>
         <div className="grid sm:grid-cols-2 gap-5">
-          {MODULES.map((m) => (
-            <div key={m.name} className="rounded-2xl border border-mist bg-white p-7 sm:p-8">
-              <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center mb-6">
-                <Icon name={m.icon} className="w-5 h-5" />
+          {MODULES.map((m, i) => (
+            <Reveal key={m.name} delay={(i % 2) * 90} className={`relative flex flex-col h-full pt-7 ${i % 2 === 1 ? 'sm:mt-8' : ''}`}>
+              <div className="absolute top-0 left-7 z-10 w-14 h-14 rounded-full ring-4 ring-paper bg-white border border-mist shadow-md flex items-center justify-center">
+                <Icon name={m.icon} className="w-6 h-6 text-electric-2" />
               </div>
-              <h3 className="text-lg font-semibold text-ink-800 mb-2.5">{m.name}</h3>
-              <p className="text-sm text-slate leading-relaxed">{m.detail}</p>
-            </div>
+              <div className="relative flex flex-col flex-1 rounded-2xl border border-mist bg-white p-7 sm:p-8 pt-11 overflow-hidden">
+                <div className="absolute inset-0 grid-backdrop-light pointer-events-none" />
+                <span
+                  aria-hidden="true"
+                  className="absolute -top-3 right-3 font-mono-num text-[5rem] leading-none font-semibold text-ink-800/5 select-none pointer-events-none"
+                >
+                  0{i + 1}
+                </span>
+                <h3 className="relative text-lg font-semibold text-ink-800 mb-2.5">{m.name}</h3>
+                <p className="relative text-sm text-slate leading-relaxed">{m.detail}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -73,7 +85,7 @@ export default function RPSPage() {
       <section className="bg-paper-2 py-20 sm:py-24 relative overflow-hidden">
         <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
-          <div className="max-w-2xl">
+          <Reveal className="max-w-2xl">
             <Kicker>Un enjeu national</Kicker>
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-6 text-balance">
               Un dispositif qui répond aux impératifs psychologiques du moment.
@@ -90,18 +102,20 @@ export default function RPSPage() {
                 La santé mentale, « grande cause nationale » de 2025 selon Emmanuel Macron.
               </li>
             </ul>
-          </div>
+          </Reveal>
         </Section>
       </section>
 
       <Section className="py-20 sm:py-28 text-center">
-        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-4 text-balance">
-          Protégez la santé mentale de vos équipes
-        </h2>
-        <p className="text-slate max-w-lg mx-auto mb-8">
-          Échangez avec un expert Doxamed pour construire le dispositif RPS adapté à votre organisation.
-        </p>
-        <ContactCTAButton label="Discuter de mon dispositif RPS" need="Prévention des risques psychosociaux" />
+        <Reveal>
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-4 text-balance">
+            Protégez la santé mentale de vos équipes
+          </h2>
+          <p className="text-slate max-w-lg mx-auto mb-8">
+            Échangez avec un expert Doxamed pour construire le dispositif RPS adapté à votre organisation.
+          </p>
+          <ContactCTAButton label="Discuter de mon dispositif RPS" need="Prévention des risques psychosociaux" />
+        </Reveal>
       </Section>
 
       <CTABanner />

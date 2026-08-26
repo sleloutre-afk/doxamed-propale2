@@ -7,6 +7,7 @@ import PatientJourney from '@/components/PatientJourney'
 import { ClientRefCard } from '@/components/Cards'
 import Icon from '@/components/Icons'
 import Picto from '@/components/pictos'
+import Reveal from '@/components/Reveal'
 import { CLIENT_REFS, BPS_EXAMS } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -55,15 +56,19 @@ export default function BPSPage() {
       {/* Promise */}
       <Section className="py-8 sm:py-10">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {PROMISE.map((p) => (
-            <div key={p.label} className="flex flex-col items-center text-center gap-3 rounded-xl border border-mist bg-white p-4">
-              {'picto' in p ? (
-                <Picto name={p.picto} className="w-5 h-5 text-electric-2" />
-              ) : (
-                <Icon name={p.icon} className="w-5 h-5 text-electric-2" />
-              )}
-              <span className="text-[0.75rem] text-slate leading-snug">{p.label}</span>
-            </div>
+          {PROMISE.map((p, i) => (
+            <Reveal key={p.label} delay={i * 60}>
+              <div className="flex flex-col items-center text-center gap-3 rounded-xl border border-mist bg-white p-4 h-full">
+                <span className="w-9 h-9 rounded-full bg-electric-dim flex items-center justify-center shrink-0">
+                  {'picto' in p ? (
+                    <Picto name={p.picto} className="w-4 h-4 text-electric-2" />
+                  ) : (
+                    <Icon name={p.icon} className="w-4 h-4 text-electric-2" />
+                  )}
+                </span>
+                <span className="text-[0.75rem] text-slate leading-snug">{p.label}</span>
+              </div>
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -72,25 +77,31 @@ export default function BPSPage() {
       <section className="bg-paper-2 py-20 sm:py-24 relative overflow-hidden">
         <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
-          <Kicker>Examens couverts</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-            8 fonctions vitales explorées en un seul parcours.
-          </h2>
-          <BodyMap exams={BPS_ONLY_EXAMS} image="/body/body.png" />
+          <Reveal>
+            <Kicker>Examens couverts</Kicker>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+              8 fonctions vitales explorées en un seul parcours.
+            </h2>
+          </Reveal>
+          <Reveal from="scale" delay={100}>
+            <BodyMap exams={BPS_ONLY_EXAMS} image="/body/body.png" />
+          </Reveal>
         </Section>
       </section>
 
       {/* Patient journey */}
       <Section className="py-20 sm:py-28">
-        <Kicker>Parcours patient</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-4 max-w-2xl text-balance">
-          Avant, sur site, à distance, après : un parcours entièrement piloté par Doxamed.
-        </h2>
-        <p className="text-slate max-w-2xl mb-10 leading-relaxed">
-          Déployé à l&rsquo;initiative de l&rsquo;entreprise, ce parcours représente un vrai bénéfice pour chaque
-          salarié : un temps dédié à sa santé, pris en charge de bout en bout, sans avance de frais ni contrainte
-          d&rsquo;organisation.
-        </p>
+        <Reveal>
+          <Kicker>Parcours patient</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-4 max-w-2xl text-balance">
+            Avant, sur site, à distance, après : un parcours entièrement piloté par Doxamed.
+          </h2>
+          <p className="text-slate max-w-2xl mb-10 leading-relaxed">
+            Déployé à l&rsquo;initiative de l&rsquo;entreprise, ce parcours représente un vrai bénéfice pour chaque
+            salarié : un temps dédié à sa santé, pris en charge de bout en bout, sans avance de frais ni contrainte
+            d&rsquo;organisation.
+          </p>
+        </Reveal>
         <PatientJourney />
         <div className="mt-10">
           <ContactCTAButton label="Déployer un BPS dans mon entreprise" need="Bilan de prévention santé (BPS)" />
@@ -99,13 +110,17 @@ export default function BPSPage() {
 
       {/* Client results */}
       <Section className="py-20 sm:py-28">
-        <Kicker>Déjà déployé</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-          Un succès immédiat chez chaque nouveau client.
-        </h2>
+        <Reveal>
+          <Kicker>Déjà déployé</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+            Un succès immédiat chez chaque nouveau client.
+          </h2>
+        </Reveal>
         <div className="grid sm:grid-cols-3 gap-5">
-          {adpRefs.map((c) => (
-            <ClientRefCard key={c.name} c={c} />
+          {adpRefs.map((c, i) => (
+            <Reveal key={c.name} delay={i * 90}>
+              <ClientRefCard c={c} />
+            </Reveal>
           ))}
         </div>
         <p className="mt-8 text-slate-2 text-sm max-w-xl">

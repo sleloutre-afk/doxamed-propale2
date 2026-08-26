@@ -3,6 +3,7 @@ import { PageHero, Section, Kicker, StatStrip, CTABanner } from '@/components/ui
 import ContactCTAButton from '@/components/ContactCTAButton'
 import MiniStepper from '@/components/MiniStepper'
 import { ClientRefCard } from '@/components/Cards'
+import Reveal from '@/components/Reveal'
 import { CLIENT_REFS } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -43,27 +44,31 @@ export default function DepistagePage() {
       </Section>
 
       <Section className="py-20 sm:py-24">
-        <Kicker>Thématiques couvertes</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-8 max-w-2xl text-balance">
-          Des dépistages thématiques, adaptés aux populations à risque.
-        </h2>
-        <div className="flex flex-wrap gap-3">
-          {THEMES.map((t) => (
-            <span key={t} className="px-4 py-2.5 rounded-full border border-mist text-sm text-ink-800 bg-white">
-              {t}
-            </span>
-          ))}
-        </div>
+        <Reveal>
+          <Kicker>Thématiques couvertes</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-8 max-w-2xl text-balance">
+            Des dépistages thématiques, adaptés aux populations à risque.
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {THEMES.map((t) => (
+              <span key={t} className="px-4 py-2.5 rounded-full border border-mist text-sm text-ink-800 bg-white">
+                {t}
+              </span>
+            ))}
+          </div>
+        </Reveal>
       </Section>
 
       <section className="bg-paper-2 py-20 sm:py-24">
         <Section>
-          <Kicker>Exemples de parcours patient</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-            Deux parcours, deux formats, une même exigence médicale.
-          </h2>
+          <Reveal>
+            <Kicker>Exemples de parcours patient</Kicker>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+              Deux parcours, deux formats, une même exigence médicale.
+            </h2>
+          </Reveal>
           <div className="grid lg:grid-cols-2 gap-6">
-            <div>
+            <Reveal from="left">
               <p className="font-semibold text-ink-800 mb-4">Dépistage — Trouble musculosquelettique</p>
               <MiniStepper
                 duration="¼h"
@@ -74,8 +79,8 @@ export default function DepistagePage() {
                   { icon: 'doctor', title: 'Téléconsultation médicale', optional: true },
                 ]}
               />
-            </div>
-            <div>
+            </Reveal>
+            <Reveal from="right" delay={80}>
               <p className="font-semibold text-ink-800 mb-4">Dépistage — Risque cardiovasculaire</p>
               <MiniStepper
                 duration="20’"
@@ -86,19 +91,23 @@ export default function DepistagePage() {
                   { icon: 'doctor', title: 'Téléconsultation médicale', optional: true },
                 ]}
               />
-            </div>
+            </Reveal>
           </div>
         </Section>
       </section>
 
       <Section className="py-20 sm:py-28">
-        <Kicker>Déjà déployé</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-          Des campagnes menées auprès de grands groupes chaque année.
-        </h2>
+        <Reveal>
+          <Kicker>Déjà déployé</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+            Des campagnes menées auprès de grands groupes chaque année.
+          </h2>
+        </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {refs.map((c) => (
-            <ClientRefCard key={c.name} c={c} />
+          {refs.map((c, i) => (
+            <Reveal key={c.name} delay={(i % 4) * 80}>
+              <ClientRefCard c={c} />
+            </Reveal>
           ))}
         </div>
         <div className="mt-10">

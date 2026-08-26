@@ -3,6 +3,7 @@ import { PageHero, Section, Kicker, CTABanner } from '@/components/ui'
 import { CareerTimeline } from '@/components/Timeline'
 import { PersonCard } from '@/components/Cards'
 import { LogoMark } from '@/components/Logo'
+import Reveal from '@/components/Reveal'
 import { ARNAUD, COMITE_STRATEGIQUE, CONSEIL_SCIENTIFIQUE, GROUPE } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function GouvernancePage() {
       {/* Arnaud Molinié */}
       <Section className="py-20 sm:py-28">
         <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
-          <div>
+          <Reveal from="left">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/photos/arnaud2.png"
@@ -55,27 +56,31 @@ export default function GouvernancePage() {
                 </p>
               ))}
             </div>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal from="right" delay={100}>
             <Kicker>Parcours</Kicker>
             <CareerTimeline entries={ARNAUD.timeline} />
-          </div>
+          </Reveal>
         </div>
       </Section>
 
       {/* Comité stratégique */}
       <section className="bg-paper-2 py-20 sm:py-28">
         <Section>
-          <Kicker>Comité stratégique</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-3 max-w-2xl text-balance">
-            Experts en santé, business et innovation.
-          </h2>
-          <p className="text-slate max-w-2xl mb-10">
-            Le comité stratégique réunit des dirigeants et des experts reconnus, dont le Dr Philippe Douste-Blazy, ancien ministre de la Santé.
-          </p>
+          <Reveal>
+            <Kicker>Comité stratégique</Kicker>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-3 max-w-2xl text-balance">
+              Experts en santé, business et innovation.
+            </h2>
+            <p className="text-slate max-w-2xl mb-10">
+              Le comité stratégique réunit des dirigeants et des experts reconnus, dont le Dr Philippe Douste-Blazy, ancien ministre de la Santé.
+            </p>
+          </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {COMITE_STRATEGIQUE.map((p) => (
-              <PersonCard key={p.name} name={p.name} role={p.role} photo={p.photo} linkedin={p.linkedin} />
+            {COMITE_STRATEGIQUE.map((p, i) => (
+              <Reveal key={p.name} delay={(i % 4) * 80}>
+                <PersonCard name={p.name} role={p.role} photo={p.photo} linkedin={p.linkedin} />
+              </Reveal>
             ))}
           </div>
         </Section>
@@ -83,17 +88,21 @@ export default function GouvernancePage() {
 
       {/* Conseil scientifique */}
       <Section className="py-20 sm:py-28">
-        <Kicker>Conseil scientifique</Kicker>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-3 max-w-2xl text-balance">
-          Médecins & chercheurs reconnus.
-        </h2>
-        <p className="text-slate max-w-2xl mb-10">
-          Présidé par Jean-Louis Ségura, le conseil scientifique rassemble des experts en gériatrie, oncologie,
-          médecine d&rsquo;urgence et management hospitalier, au service des enjeux actuels du système de santé.
-        </p>
+        <Reveal>
+          <Kicker>Conseil scientifique</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-3 max-w-2xl text-balance">
+            Médecins & chercheurs reconnus.
+          </h2>
+          <p className="text-slate max-w-2xl mb-10">
+            Présidé par Jean-Louis Ségura, le conseil scientifique rassemble des experts en gériatrie, oncologie,
+            médecine d&rsquo;urgence et management hospitalier, au service des enjeux actuels du système de santé.
+          </p>
+        </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {CONSEIL_SCIENTIFIQUE.map((p) => (
-            <PersonCard key={p.name} name={p.name} role={p.role} detail={p.detail} photo={p.photo} linkedin={p.linkedin} />
+          {CONSEIL_SCIENTIFIQUE.map((p, i) => (
+            <Reveal key={p.name} delay={(i % 4) * 80}>
+              <PersonCard name={p.name} role={p.role} detail={p.detail} photo={p.photo} linkedin={p.linkedin} />
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -102,10 +111,12 @@ export default function GouvernancePage() {
       <section className="bg-white py-20 sm:py-28 relative overflow-hidden border-y border-mist">
         <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
-          <Kicker>Un groupe structuré</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-14 max-w-2xl text-balance">
-            Capitello Group, détenu à 100% par Arnaud Molinié.
-          </h2>
+          <Reveal>
+            <Kicker>Un groupe structuré</Kicker>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-14 max-w-2xl text-balance">
+              Capitello Group, détenu à 100% par Arnaud Molinié.
+            </h2>
+          </Reveal>
           <div className="flex flex-col items-center">
             <div className="flex flex-col items-center mb-6">
               <div className="w-14 h-14 rounded-full bg-electric-dim border border-electric/30 flex items-center justify-center text-electric-2 font-semibold text-sm mb-3">

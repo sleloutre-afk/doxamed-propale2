@@ -6,6 +6,7 @@ import { NewsTypeBadge, NewsCard } from '@/components/Cards'
 import Icon from '@/components/Icons'
 import Picto from '@/components/pictos'
 import ContactCTAButton from '@/components/ContactCTAButton'
+import Reveal from '@/components/Reveal'
 import { NEWS } from '@/lib/content'
 
 export function generateStaticParams() {
@@ -52,7 +53,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
 
       <Section className="py-16 sm:py-24">
         <div className="grid lg:grid-cols-[1fr_320px] gap-14">
-          <article className="max-w-2xl">
+          <Reveal from="left" className="max-w-2xl">
             <p className="text-lg text-slate leading-relaxed mb-8">{item.excerpt}</p>
             {item.body ? (
               <div className="space-y-5">
@@ -69,7 +70,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
 
             {item.type === 'livre-blanc' && (
               <div className="mt-10 rounded-2xl border border-mist bg-white p-7 flex items-center gap-5">
-                <div className="w-12 h-12 rounded-xl bg-signal/10 text-signal flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full bg-signal/10 text-signal flex items-center justify-center shrink-0">
                   <Picto name="whitepaper" className="w-6 h-6" />
                 </div>
                 <div className="flex-1">
@@ -81,29 +82,35 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
                 </button>
               </div>
             )}
-          </article>
+          </Reveal>
 
-          <aside className="space-y-6">
-            <div className="rounded-2xl border border-mist bg-white p-6">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-electric-2 mb-4">Partager</p>
-              <div className="flex gap-2">
-                <span className="w-9 h-9 rounded-full border border-mist flex items-center justify-center text-slate text-xs font-semibold">in</span>
-                <span className="w-9 h-9 rounded-full border border-mist flex items-center justify-center text-slate text-xs font-semibold">X</span>
+          <Reveal from="right" delay={100}>
+            <aside className="space-y-6">
+              <div className="rounded-2xl border border-mist bg-white p-6">
+                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-electric-2 mb-4">Partager</p>
+                <div className="flex gap-2">
+                  <span className="w-9 h-9 rounded-full border border-mist flex items-center justify-center text-slate text-xs font-semibold">in</span>
+                  <span className="w-9 h-9 rounded-full border border-mist flex items-center justify-center text-slate text-xs font-semibold">X</span>
+                </div>
               </div>
-            </div>
-            <div className="rounded-2xl border border-mist bg-white p-6">
-              <ContactCTAButton className="w-full" />
-            </div>
-          </aside>
+              <div className="rounded-2xl border border-mist bg-white p-6">
+                <ContactCTAButton className="w-full" />
+              </div>
+            </aside>
+          </Reveal>
         </div>
       </Section>
 
       <section className="bg-paper-2 py-16 sm:py-24">
         <Section>
-          <Kicker>À lire aussi</Kicker>
+          <Reveal>
+            <Kicker>À lire aussi</Kicker>
+          </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
-            {related.map((n) => (
-              <NewsCard key={n.slug} n={n} />
+            {related.map((n, i) => (
+              <Reveal key={n.slug} delay={i * 90}>
+                <NewsCard n={n} />
+              </Reveal>
             ))}
           </div>
         </Section>

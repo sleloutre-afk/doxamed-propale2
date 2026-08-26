@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { PageHero, Section, Kicker, StatStrip, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import Picto from '@/components/pictos'
+import Reveal from '@/components/Reveal'
 
 export const metadata: Metadata = {
   title: 'MobilCare — unité de santé itinérante',
@@ -31,7 +32,7 @@ export default function MobilCarePage() {
 
       <Section className="py-20 sm:py-24">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
-          <div>
+          <Reveal from="left">
             <Kicker>Comment ça fonctionne</Kicker>
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-6 text-balance">
               Des camping-cars aménagés en unité médicale mobile.
@@ -47,16 +48,18 @@ export default function MobilCarePage() {
               l&rsquo;aventure Doxamed (alors Loxamed) a commencé.
             </p>
             <ContactCTAButton label="Programmer une tournée MobilCare" />
-          </div>
-          <div className="rounded-2xl border border-mist bg-white p-7 sm:p-8">
-            <div className="w-11 h-11 rounded-xl bg-electric-dim text-electric-2 flex items-center justify-center mb-5">
-              <Picto name="mobilcare" className="w-5 h-5" />
+          </Reveal>
+          <Reveal from="right" delay={100}>
+            <div className="rounded-2xl border border-mist bg-white p-7 sm:p-8">
+              <div className="w-11 h-11 rounded-full bg-electric-dim text-electric-2 flex items-center justify-center mb-5">
+                <Picto name="mobilcare" className="w-5 h-5" />
+              </div>
+              <p className="text-sm text-slate leading-relaxed">
+                Déployé à travers la France : Marseille, Nice, Montpellier, Strasbourg, Bordeaux, Rennes… et
+                jusqu&rsquo;à 2 000 tests par jour lors des campagnes menées avec Disneyland Paris.
+              </p>
             </div>
-            <p className="text-sm text-slate leading-relaxed">
-              Déployé à travers la France : Marseille, Nice, Montpellier, Strasbourg, Bordeaux, Rennes… et
-              jusqu&rsquo;à 2 000 tests par jour lors des campagnes menées avec Disneyland Paris.
-            </p>
-          </div>
+          </Reveal>
         </div>
       </Section>
 

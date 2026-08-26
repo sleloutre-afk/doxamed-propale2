@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHero, Section, Kicker, CTABanner } from '@/components/ui'
 import { ModeCard } from '@/components/Cards'
+import Reveal from '@/components/Reveal'
 import { MODES } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -21,24 +22,28 @@ export default function ModesInterventionPage() {
 
       <Section className="py-20 sm:py-28">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {MODES.map((m) => (
-            <ModeCard key={m.slug} m={m} />
+          {MODES.map((m, i) => (
+            <Reveal key={m.slug} delay={(i % 4) * 80} className={i % 2 === 1 ? 'sm:mt-8' : ''}>
+              <ModeCard m={m} />
+            </Reveal>
           ))}
         </div>
       </Section>
 
       <section className="bg-paper-2 py-20 sm:py-24">
         <Section>
-          <Kicker>Pourquoi plusieurs formats</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-6 max-w-2xl text-balance">
-            Le format s&rsquo;adapte au contexte, jamais le niveau d&rsquo;exigence médicale.
-          </h2>
-          <p className="text-slate max-w-2xl leading-relaxed">
-            Qu&rsquo;il s&rsquo;agisse d&rsquo;un bilan de prévention santé, d&rsquo;une campagne de dépistage ou
-            d&rsquo;un accès aux soins courant, chaque dispositif d&rsquo;intervention embarque le même triptyque :
-            un chef d&rsquo;opération pour l&rsquo;accueil, un infirmier diplômé d&rsquo;État présent physiquement,
-            et un médecin joignable à distance.
-          </p>
+          <Reveal>
+            <Kicker>Pourquoi plusieurs formats</Kicker>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-6 max-w-2xl text-balance">
+              Le format s&rsquo;adapte au contexte, jamais le niveau d&rsquo;exigence médicale.
+            </h2>
+            <p className="text-slate max-w-2xl leading-relaxed">
+              Qu&rsquo;il s&rsquo;agisse d&rsquo;un bilan de prévention santé, d&rsquo;une campagne de dépistage ou
+              d&rsquo;un accès aux soins courant, chaque dispositif d&rsquo;intervention embarque le même triptyque :
+              un chef d&rsquo;opération pour l&rsquo;accueil, un infirmier diplômé d&rsquo;État présent physiquement,
+              et un médecin joignable à distance.
+            </p>
+          </Reveal>
         </Section>
       </section>
 

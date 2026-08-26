@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHero, Section, Kicker, CTABanner } from '@/components/ui'
 import NewsGrid from '@/components/NewsGrid'
+import Reveal from '@/components/Reveal'
 import { NEWS } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -19,7 +20,9 @@ export default function ActualitesPage() {
       />
 
       <Section className="py-16 sm:py-24">
-        <Kicker>Tous les formats</Kicker>
+        <Reveal>
+          <Kicker>Tous les formats</Kicker>
+        </Reveal>
         <NewsGrid items={NEWS} />
       </Section>
 

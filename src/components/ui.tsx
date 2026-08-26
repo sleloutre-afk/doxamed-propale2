@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import ContactCTAButton from './ContactCTAButton'
+import Reveal from './Reveal'
+import CountUp from './CountUp'
 
 export function Kicker({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
@@ -125,27 +127,25 @@ const LG_COLS: Record<number, string> = {
   6: 'lg:grid-cols-6',
 }
 
-export function StatStrip({
-  stats,
-  dark = false,
-}: {
-  stats: { value: string; label: string }[]
-  dark?: boolean
-}) {
+// Same floating "dock" treatment as the home hero's stats row: a single
+// white card with dividers, drop shadow and animated CountUp values —
+// rather than a plain grid-mosaic strip — so every page's stat block
+// reads as the same component, not a page-specific one-off.
+export function StatStrip({ stats }: { stats: { value: string; label: string }[] }) {
   const lgCols = LG_COLS[Math.min(stats.length, 6)] ?? 'lg:grid-cols-3'
   return (
     <div
-      className={`grid grid-cols-2 sm:grid-cols-3 ${lgCols} gap-px rounded-2xl overflow-hidden border ${
-        dark ? 'border-white/10 bg-white/10' : 'border-mist bg-mist'
-      }`}
+      className={`rounded-2xl border border-mist bg-white shadow-lg shadow-ink-800/[0.04] grid grid-cols-2 sm:grid-cols-3 ${lgCols} divide-x divide-y sm:divide-y-0 divide-mist`}
     >
-      {stats.map((s) => (
-        <div key={s.label} className={`p-6 sm:p-7 ${dark ? 'bg-ink-800' : 'bg-white'}`}>
-          <div className={`font-mono-num text-2xl sm:text-3xl font-semibold ${dark ? 'text-electric-light' : 'text-electric-2'}`}>
-            {s.value}
+      {stats.map((s, i) => (
+        <Reveal key={s.label} delay={i * 60} from="up">
+          <div className="p-6 sm:p-7">
+            <div className="font-mono-num text-2xl sm:text-3xl font-semibold text-electric-2">
+              <CountUp value={s.value} />
+            </div>
+            <div className="mt-1.5 text-[0.8rem] leading-snug text-slate">{s.label}</div>
           </div>
-          <div className={`mt-1.5 text-[0.8rem] leading-snug ${dark ? 'text-white/55' : 'text-slate'}`}>{s.label}</div>
-        </div>
+        </Reveal>
       ))}
     </div>
   )

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { NewsCard } from './Cards'
+import Reveal from './Reveal'
 import type { NewsItem } from '@/lib/content'
 
 const FILTERS: { key: NewsItem['type'] | 'all'; label: string }[] = [
@@ -35,8 +36,10 @@ export default function NewsGrid({ items }: { items: NewsItem[] }) {
         <p className="text-slate text-sm">Aucun contenu pour ce filtre.</p>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((n) => (
-            <NewsCard key={n.slug} n={n} />
+          {filtered.map((n, i) => (
+            <Reveal key={n.slug} delay={(i % 3) * 80}>
+              <NewsCard n={n} />
+            </Reveal>
           ))}
         </div>
       )}
