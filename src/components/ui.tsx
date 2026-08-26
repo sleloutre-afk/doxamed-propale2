@@ -27,74 +27,75 @@ export function PageHero({
   video,
 }: {
   kicker: string
-  /** Plain string, or JSX with a highlighted word via <span className="text-electric-light">…</span>. */
+  /** Plain string, or JSX with a highlighted word via <span className="text-electric-2">…</span>. */
   title: React.ReactNode
   lead?: string
   crumb?: { label: string; href: string }[]
-  /** Optional background photo (e.g. "/photos/mobilcar.png") behind the hero. */
+  /** Optional photo (e.g. "/photos/mobilcar.png"), shown in a framed panel beside the text. */
   image?: string
-  /** CSS object-position for the background photo (default "center"). */
+  /** CSS object-position for the photo/video (default "center"). */
   imagePosition?: string
-  /** Optional background video (e.g. "/videos/bps.mp4") behind the hero — takes priority over `image`. */
+  /** Optional video (e.g. "/videos/bps.mp4"), shown in the same framed panel — takes priority over `image`. */
   video?: string
 }) {
+  const hasMedia = Boolean(image || video)
   return (
-    <section className="relative bg-ink-800 text-white overflow-hidden">
-      {(video || image) && (
-        <>
-          {video ? (
-            <video
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: imagePosition }}
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-hidden="true"
-            >
-              <source src={video} type="video/mp4" />
-            </video>
-          ) : (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={image}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: imagePosition }}
-            />
-          )}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(100deg, rgba(6,13,24,0.95) 0%, rgba(6,13,24,0.86) 32%, rgba(6,13,24,0.58) 68%, rgba(6,13,24,0.32) 100%)',
-            }}
-          />
-        </>
-      )}
-      <div className="absolute inset-0 grid-backdrop" />
-      <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-electric/10 blur-3xl" />
-      <div className="relative max-w-[1400px] mx-auto px-5 sm:px-8 pt-32 pb-16 sm:pt-40 sm:pb-20">
+    <section className="relative bg-paper overflow-hidden pt-24 sm:pt-28 pb-16 sm:pb-20">
+      <div className="absolute inset-0 grid-backdrop-light" />
+      <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-electric/10 blur-3xl pointer-events-none" />
+      <div className="relative max-w-[1400px] mx-auto px-5 sm:px-8">
         {crumb && (
-          <div className="flex items-center gap-2 text-xs text-white/45 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-white/80 transition-colors">Accueil</Link>
+          <div className="flex items-center gap-2 text-xs text-slate-2 mb-6 flex-wrap">
+            <Link href="/" className="hover:text-ink-800 transition-colors">Accueil</Link>
             {crumb.map((c, i) => (
               <span key={c.href} className="flex items-center gap-2">
                 <span>/</span>
                 {i === crumb.length - 1 ? (
-                  <span className="text-white/70">{c.label}</span>
+                  <span className="text-ink-800">{c.label}</span>
                 ) : (
-                  <Link href={c.href} className="hover:text-white/80 transition-colors">{c.label}</Link>
+                  <Link href={c.href} className="hover:text-ink-800 transition-colors">{c.label}</Link>
                 )}
               </span>
             ))}
           </div>
         )}
-        <Kicker dark>{kicker}</Kicker>
-        <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-semibold tracking-tight leading-[1.05] text-balance max-w-3xl">
-          {title}
-        </h1>
-        {lead && <p className="mt-6 text-lg text-white/60 max-w-2xl leading-relaxed">{lead}</p>}
+        <div className={hasMedia ? 'grid lg:grid-cols-[1fr_0.85fr] gap-10 lg:gap-14 items-center' : ''}>
+          <div>
+            <Kicker>{kicker}</Kicker>
+            <h1 className={`text-4xl sm:text-5xl lg:text-[3.2rem] font-semibold tracking-tight leading-[1.05] text-ink-800 text-balance ${hasMedia ? '' : 'max-w-3xl'}`}>
+              {title}
+            </h1>
+            {lead && <p className={`mt-6 text-lg text-slate leading-relaxed ${hasMedia ? '' : 'max-w-2xl'}`}>{lead}</p>}
+          </div>
+          {hasMedia && (
+            <div className="relative">
+              <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-xl shadow-ink-800/10 border border-mist/60">
+                {video ? (
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: imagePosition }}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    aria-hidden="true"
+                  >
+                    <source src={video} type="video/mp4" />
+                  </video>
+                ) : (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={image}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: imagePosition }}
+                  />
+                )}
+              </div>
+              <span className="hidden lg:block absolute -top-6 -right-6 w-20 h-20 rounded-full border border-dashed border-electric/30 pointer-events-none" />
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )

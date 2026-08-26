@@ -28,24 +28,25 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
 
   return (
     <>
-      <section className="relative bg-ink-800 text-white overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
-        <Section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20">
-          <div className="flex items-center gap-2 text-xs text-white/45 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-white/80 transition-colors">Accueil</Link>
+      <section className="relative bg-paper overflow-hidden pt-24 sm:pt-28 pb-16 sm:pb-20">
+        <div className="absolute inset-0 grid-backdrop-light" />
+        <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-electric/10 blur-3xl pointer-events-none" />
+        <Section className="relative">
+          <div className="flex items-center gap-2 text-xs text-slate-2 mb-6 flex-wrap">
+            <Link href="/" className="hover:text-ink-800 transition-colors">Accueil</Link>
             <span>/</span>
-            <Link href="/actualites" className="hover:text-white/80 transition-colors">Actualités</Link>
+            <Link href="/actualites" className="hover:text-ink-800 transition-colors">Actualités</Link>
             <span>/</span>
-            <span className="text-white/70">{item.title}</span>
+            <span className="text-ink-800">{item.title}</span>
           </div>
           <div className="flex items-center gap-3 mb-6">
             <NewsTypeBadge type={item.type} />
-            <span className="text-sm text-white/50">{item.date}</span>
+            <span className="text-sm text-slate-2">{item.date}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-semibold tracking-tight leading-[1.1] max-w-3xl text-balance">
+          <h1 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-semibold tracking-tight leading-[1.1] max-w-3xl text-balance text-ink-800">
             {item.title}
           </h1>
-          {item.outlet && <p className="mt-5 text-white/50 italic">{item.outlet}</p>}
+          {item.outlet && <p className="mt-5 text-slate italic">{item.outlet}</p>}
         </Section>
       </section>
 
@@ -75,7 +76,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
                   <p className="font-semibold text-ink-800">Télécharger le livre blanc</p>
                   <p className="text-xs text-slate mt-1">Format PDF — accès immédiat</p>
                 </div>
-                <button className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-ink-800 text-white text-sm font-semibold whitespace-nowrap">
+                <button className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-electric text-white text-sm font-semibold whitespace-nowrap hover:bg-electric-2 transition-colors">
                   <Icon name="download" className="w-4 h-4" /> PDF
                 </button>
               </div>

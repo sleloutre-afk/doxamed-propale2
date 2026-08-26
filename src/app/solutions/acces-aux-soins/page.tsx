@@ -38,7 +38,7 @@ export default function AccesAuxSoinsPage() {
     <>
       <PageHero
         kicker="Solution n°4 — Accès aux soins"
-        title={<>Des espaces de santé déployables <span className="text-electric-light">partout, pour tous.</span></>}
+        title={<>Des espaces de santé déployables <span className="text-electric-2">partout, pour tous.</span></>}
         lead="Un socle évolutif d'accès aux soins, adaptable au projet médical du territoire, en lien avec les ARS, URPS, CPTS et MSP."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Accès aux soins', href: '/solutions/acces-aux-soins' }]}
         video="/videos/acces.mp4"
@@ -72,14 +72,14 @@ export default function AccesAuxSoinsPage() {
         </div>
       </Section>
 
-      <section className="bg-ink-800 py-20 sm:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
+      <section className="bg-paper-2 py-20 sm:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
-          <Kicker dark>Ancrage territorial</Kicker>
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white mb-6 max-w-2xl text-balance">
+          <Kicker>Ancrage territorial</Kicker>
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-6 max-w-2xl text-balance">
             S&rsquo;inscrire dans un projet médical de territoire.
           </h2>
-          <p className="text-white/60 max-w-2xl leading-relaxed mb-6">
+          <p className="text-slate max-w-2xl leading-relaxed mb-6">
             Doxamed s&rsquo;intègre aux usages des professionnels de santé et travaille en lien avec les
             agences régionales de santé (ARS), les unions régionales de professionnels de santé (URPS), les
             communautés professionnelles territoriales de santé (CPTS) et les maisons de santé
@@ -87,7 +87,7 @@ export default function AccesAuxSoinsPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             {['ARS', 'URPS', 'CPTS', 'MSP'].map((t) => (
-              <span key={t} className="px-4 py-2 rounded-full border border-white/15 text-sm text-white/80 font-mono-num">
+              <span key={t} className="px-4 py-2 rounded-full border border-mist bg-white text-sm text-ink-800 font-mono-num">
                 {t}
               </span>
             ))}

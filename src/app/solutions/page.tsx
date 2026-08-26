@@ -15,7 +15,7 @@ export default function SolutionsPage() {
     <>
       <PageHero
         kicker="Nos solutions de santé"
-        title={<>Des solutions complémentaires, un seul objectif : la santé <span className="text-electric-light">pour tous, partout.</span></>}
+        title={<>Des solutions complémentaires, un seul objectif : la santé <span className="text-electric-2">pour tous, partout.</span></>}
         lead="De la prévention à l'accès aux soins, Doxamed conçoit des dispositifs médicaux exigeants, pilotés par des professionnels de santé et déployés au plus près de vos équipes."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }]}
         image="/photos/solutions.png"

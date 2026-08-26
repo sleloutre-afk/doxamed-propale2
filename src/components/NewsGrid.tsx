@@ -24,7 +24,7 @@ export default function NewsGrid({ items }: { items: NewsItem[] }) {
             key={f.key}
             onClick={() => setFilter(f.key)}
             className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
-              filter === f.key ? 'bg-ink-800 border-ink-800 text-white' : 'border-mist text-slate hover:border-electric hover:text-electric-2'
+              filter === f.key ? 'bg-electric border-electric text-white' : 'border-mist text-slate hover:border-electric hover:text-electric-2'
             }`}
           >
             {f.label}

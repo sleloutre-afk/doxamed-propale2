@@ -13,7 +13,7 @@ export default function ActualitesPage() {
     <>
       <PageHero
         kicker="Actualités & médias"
-        title={<>Ce que nous construisons, ce que <span className="text-electric-light">la presse en dit.</span></>}
+        title={<>Ce que nous construisons, ce que <span className="text-electric-2">la presse en dit.</span></>}
         lead="Articles, reportages terrain, interviews, retombées médiatiques et livres blancs : le hub média de Doxamed."
         crumb={[{ label: 'Actualités', href: '/actualites' }]}
       />

@@ -141,7 +141,7 @@ export default function ContactModal({
                 </div>
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-ink-800 text-white text-sm font-semibold py-3 hover:bg-electric-2 transition-colors"
+                  className="w-full rounded-lg bg-electric text-white text-sm font-semibold py-3 hover:bg-electric-2 transition-colors"
                 >
                   Envoyer ma demande
                 </button>

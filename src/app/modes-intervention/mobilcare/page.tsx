@@ -13,7 +13,7 @@ export default function MobilCarePage() {
     <>
       <PageHero
         kicker="Mode d'intervention"
-        title={<>MobilCare : la santé <span className="text-electric-light">qui vient à vous</span>, ville après ville.</>}
+        title={<>MobilCare : la santé <span className="text-electric-2">qui vient à vous</span>, ville après ville.</>}
         lead="Le dispositif historique de Doxamed, né en 2020 pour aller au plus près des publics éloignés du soin."
         crumb={[{ label: "Nos modes d'intervention", href: '/modes-intervention' }, { label: 'MobilCare', href: '/modes-intervention/mobilcare' }]}
         image="/photos/mobilcar.png"

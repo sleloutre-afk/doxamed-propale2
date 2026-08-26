@@ -7,7 +7,7 @@ export default function MiniStepper({ steps, duration }: { steps: MiniStep[]; du
     <div className="rounded-2xl border border-mist bg-white p-6 sm:p-8">
       {duration && (
         <div className="flex justify-end mb-4">
-          <span className="font-mono-num text-xs text-white bg-ink-800 px-2.5 py-1 rounded-full">{duration}</span>
+          <span className="font-mono-num text-xs text-white bg-electric px-2.5 py-1 rounded-full">{duration}</span>
         </div>
       )}
       <div className="grid sm:grid-cols-4 gap-6 sm:gap-0 relative">

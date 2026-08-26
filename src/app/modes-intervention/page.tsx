@@ -13,7 +13,7 @@ export default function ModesInterventionPage() {
     <>
       <PageHero
         kicker="Nos modes d'intervention"
-        title={<>Un même socle médical, <span className="text-electric-light">quatre formats de déploiement.</span></>}
+        title={<>Un même socle médical, <span className="text-electric-2">quatre formats de déploiement.</span></>}
         lead="Dans vos locaux, en cabine autonome, en unité itinérante ou en gare : nos dispositifs s'adaptent à votre contexte sans jamais transiger sur l'exigence médicale."
         crumb={[{ label: "Nos modes d'intervention", href: '/modes-intervention' }]}
         image="/photos/interventions.png"

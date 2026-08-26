@@ -42,20 +42,23 @@ export default function CarrieresPage() {
         </div>
       </Section>
 
-      <section className="bg-ink-800 py-20 sm:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
-        <Section className="relative text-center">
-          <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-6">
-            <Icon name="users" className="w-6 h-6 text-electric-light" />
+      <Section className="py-20 sm:py-24">
+        <div className="relative rounded-3xl bg-paper-2 border border-mist overflow-hidden px-6 py-16 text-center">
+          <div className="absolute inset-0 grid-backdrop-light opacity-70" />
+          <span className="absolute -top-20 -right-20 w-64 h-64 rounded-full border border-electric/25 pointer-events-none" />
+          <div className="relative">
+            <div className="w-14 h-14 rounded-2xl bg-electric-dim flex items-center justify-center mx-auto mb-6">
+              <Icon name="users" className="w-6 h-6 text-electric-2" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-4 max-w-lg mx-auto text-balance">
+              Aucun poste ne correspond ? Envoyez-nous une candidature spontanée.
+            </h2>
+            <div className="mt-6">
+              <ContactCTAButton label="Candidature spontanée" need="Autre demande" />
+            </div>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white mb-4 max-w-lg mx-auto text-balance">
-            Aucun poste ne correspond ? Envoyez-nous une candidature spontanée.
-          </h2>
-          <div className="mt-6">
-            <ContactCTAButton label="Candidature spontanée" need="Autre demande" />
-          </div>
-        </Section>
-      </section>
+        </div>
+      </Section>
     </>
   )
 }

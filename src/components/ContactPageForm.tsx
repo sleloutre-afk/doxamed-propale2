@@ -83,7 +83,7 @@ export default function ContactPageForm() {
           className="w-full rounded-lg border border-mist bg-white px-3.5 py-2.5 text-sm text-ink-800 placeholder:text-slate-2 focus:border-electric outline-none transition-colors resize-none"
         />
       </div>
-      <button type="submit" className="w-full sm:w-auto px-8 rounded-lg bg-ink-800 text-white text-sm font-semibold py-3.5 hover:bg-electric-2 transition-colors">
+      <button type="submit" className="w-full sm:w-auto px-8 rounded-lg bg-electric text-white text-sm font-semibold py-3.5 hover:bg-electric-2 transition-colors">
         Envoyer ma demande
       </button>
       <p className="text-[11px] text-slate-2 leading-relaxed">

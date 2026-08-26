@@ -13,7 +13,7 @@ export default function LabelsPrixPage() {
     <>
       <PageHero
         kicker="À propos — Labels & prix"
-        title={<>Labels, certifications et prix : <span className="text-electric-light">une reconnaissance méritée.</span></>}
+        title={<>Labels, certifications et prix : <span className="text-electric-2">une reconnaissance méritée.</span></>}
         crumb={[{ label: 'À propos', href: '/a-propos' }, { label: 'Labels & prix', href: '/a-propos/labels-prix' }]}
       />
 

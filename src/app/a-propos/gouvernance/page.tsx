@@ -15,7 +15,7 @@ export default function GouvernancePage() {
     <>
       <PageHero
         kicker="À propos — Gouvernance & équipe"
-        title={<>Une gouvernance qui conjugue <span className="text-electric-light">excellence médicale</span> et vision stratégique des entreprises.</>}
+        title={<>Une gouvernance qui conjugue <span className="text-electric-2">excellence médicale</span> et vision stratégique des entreprises.</>}
         crumb={[{ label: 'À propos', href: '/a-propos' }, { label: 'Gouvernance & équipe', href: '/a-propos/gouvernance' }]}
       />
 
@@ -99,45 +99,40 @@ export default function GouvernancePage() {
       </Section>
 
       {/* Groupe structuré */}
-      <section className="bg-ink-800 py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
+      <section className="bg-white py-20 sm:py-28 relative overflow-hidden border-y border-mist">
+        <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
-          <Kicker dark>Un groupe structuré</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-14 max-w-2xl text-balance">
+          <Kicker>Un groupe structuré</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-14 max-w-2xl text-balance">
             Capitello Group, détenu à 100% par Arnaud Molinié.
           </h2>
           <div className="flex flex-col items-center">
             <div className="flex flex-col items-center mb-6">
-              <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white font-semibold text-sm mb-3">
+              <div className="w-14 h-14 rounded-full bg-electric-dim border border-electric/30 flex items-center justify-center text-electric-2 font-semibold text-sm mb-3">
                 AM
               </div>
-              <p className="text-sm text-white/70">Arnaud Molinié</p>
-              <span className="font-mono-num text-xs text-electric-light mt-1">100%</span>
+              <p className="text-sm text-slate">Arnaud Molinié</p>
+              <span className="font-mono-num text-xs text-electric-2 mt-1">100%</span>
             </div>
-            <div className="w-px h-8 bg-white/20" />
-            <div className="px-6 py-3 rounded-full border border-electric text-white font-semibold mb-6">Capitello Group</div>
-            <div className="w-full max-w-2xl h-px bg-white/20 relative mb-6">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-8 w-px h-8 bg-white/20" />
+            <div className="w-px h-8 bg-mist" />
+            <div className="px-6 py-3 rounded-full border border-electric text-ink-800 font-semibold mb-6">Capitello Group</div>
+            <div className="w-full max-w-2xl h-px bg-mist relative mb-6">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-8 w-px h-8 bg-mist" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 w-full max-w-3xl">
               {GROUPE.map((g) => (
-                <div key={g.name} className="rounded-2xl border border-white/15 bg-white/5 p-6 text-center">
+                <div key={g.name} className="rounded-2xl border border-mist bg-paper-2 p-6 text-center">
                   {g.name === 'Doxamed' ? (
                     <LogoMark className="w-7 h-7 mx-auto mb-3" />
                   ) : g.name === 'Teledok' ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src="/brand/teledok.svg"
-                      alt="TeleDok"
-                      className="h-7 w-auto mx-auto mb-3 object-contain"
-                      style={{ filter: 'invert(1)' }}
-                    />
+                    <img src="/brand/teledok.svg" alt="TeleDok" className="h-7 w-auto mx-auto mb-3 object-contain opacity-70" />
                   ) : (
-                    <div className="w-7 h-7 mx-auto mb-3 rounded-md bg-electric/20" />
+                    <div className="w-7 h-7 mx-auto mb-3 rounded-md bg-electric-dim" />
                   )}
-                  <p className="font-semibold text-white">{g.name}</p>
-                  <p className="text-xs text-white/50 mt-1">{g.role}</p>
-                  <span className="font-mono-num text-[0.7rem] text-electric-light mt-2 inline-block">100%</span>
+                  <p className="font-semibold text-ink-800">{g.name}</p>
+                  <p className="text-xs text-slate-2 mt-1">{g.role}</p>
+                  <span className="font-mono-num text-[0.7rem] text-electric-2 mt-2 inline-block">100%</span>
                 </div>
               ))}
             </div>

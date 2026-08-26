@@ -15,7 +15,7 @@ export default function AProposPage() {
     <>
       <PageHero
         kicker="À propos de nous"
-        title={<>Une vision née en pleine crise sanitaire, devenue <span className="text-electric-light">un modèle de santé de proximité.</span></>}
+        title={<>Une vision née en pleine crise sanitaire, devenue <span className="text-electric-2">un modèle de santé de proximité.</span></>}
         lead="Fondée en 2020 sous le nom de Loxamed, Doxamed développe des solutions de santé mobiles et connectées, intervenant sur trois axes stratégiques."
         crumb={[{ label: 'À propos', href: '/a-propos' }]}
         image="/photos/loxamed.png"

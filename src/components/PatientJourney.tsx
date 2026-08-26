@@ -57,7 +57,7 @@ export default function PatientJourney() {
             key={i}
             onClick={() => setActive(i)}
             className={`shrink-0 px-3.5 py-2 rounded-full text-xs font-semibold border ${
-              i === active ? 'bg-ink-800 border-ink-800 text-white' : 'border-mist text-slate'
+              i === active ? 'bg-electric border-electric text-white' : 'border-mist text-slate'
             }`}
           >
             {i + 1}. {s.title}
@@ -71,7 +71,7 @@ export default function PatientJourney() {
             {PARCOURS_PATIENT[active].phase}
           </span>
           {PARCOURS_PATIENT[active].duration && (
-            <span className="font-mono-num text-xs text-white bg-ink-800 px-2.5 py-1 rounded-full">
+            <span className="font-mono-num text-xs text-white bg-electric px-2.5 py-1 rounded-full">
               {PARCOURS_PATIENT[active].duration}
             </span>
           )}

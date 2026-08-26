@@ -36,7 +36,7 @@ export default function RPSPage() {
     <>
       <PageHero
         kicker="Solution n°2 — RPS"
-        title={<>Prévenir, écouter, intervenir : <span className="text-electric-light">la santé mentale</span> au cœur du travail.</>}
+        title={<>Prévenir, écouter, intervenir : <span className="text-electric-2">la santé mentale</span> au cœur du travail.</>}
         lead="Un dispositif en quatre modules d'évaluation, d'accompagnement et de prévention des risques psychosociaux, pensé pour les entreprises."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Risques psychosociaux', href: '/solutions/risques-psychosociaux' }]}
         video="/videos/rps.mp4"
@@ -70,23 +70,23 @@ export default function RPSPage() {
         </div>
       </Section>
 
-      <section className="bg-ink-800 py-20 sm:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
+      <section className="bg-paper-2 py-20 sm:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
           <div className="max-w-2xl">
-            <Kicker dark>Un enjeu national</Kicker>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white mb-6 text-balance">
+            <Kicker>Un enjeu national</Kicker>
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink-800 mb-6 text-balance">
               Un dispositif qui répond aux impératifs psychologiques du moment.
             </h2>
-            <ul className="space-y-4 text-white/65 text-sm leading-relaxed">
+            <ul className="space-y-4 text-slate text-sm leading-relaxed">
               <li className="flex gap-3">
-                <Icon name="spark" className="w-4 h-4 text-electric-light shrink-0 mt-0.5" />
+                <Icon name="spark" className="w-4 h-4 text-electric-2 shrink-0 mt-0.5" />
                 Première charte « Santé mentale et emploi » lancée en août 2025, qui invite les entreprises à
                 s&rsquo;engager pour faire de la santé mentale au travail un levier de performance durable et de
                 bien-être collectif (site du gouvernement).
               </li>
               <li className="flex gap-3">
-                <Icon name="spark" className="w-4 h-4 text-electric-light shrink-0 mt-0.5" />
+                <Icon name="spark" className="w-4 h-4 text-electric-2 shrink-0 mt-0.5" />
                 La santé mentale, « grande cause nationale » de 2025 selon Emmanuel Macron.
               </li>
             </ul>

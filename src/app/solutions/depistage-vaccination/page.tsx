@@ -26,7 +26,7 @@ export default function DepistagePage() {
     <>
       <PageHero
         kicker="Solution n°3 — Campagnes"
-        title={<>Des campagnes de <span className="text-electric-light">dépistage et de vaccination</span> ciblées.</>}
+        title={<>Des campagnes de <span className="text-electric-2">dépistage et de vaccination</span> ciblées.</>}
         lead="Identification et prise en charge de risques spécifiques pour des populations identifiées, avec un dispositif clé en main sur site."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Dépistage & vaccination', href: '/solutions/depistage-vaccination' }]}
         video="/videos/vaccin.mp4"

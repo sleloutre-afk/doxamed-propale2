@@ -15,7 +15,7 @@ export default function ReferencesPage() {
     <>
       <PageHero
         kicker="Références"
-        title={<>Des résultats <span className="text-electric-light">mesurables,</span> auprès de grands groupes et d&rsquo;institutions.</>}
+        title={<>Des résultats <span className="text-electric-2">mesurables,</span> auprès de grands groupes et d&rsquo;institutions.</>}
         crumb={[{ label: 'Références', href: '/references' }]}
       />
 
@@ -42,19 +42,22 @@ export default function ReferencesPage() {
         </div>
       </Section>
 
-      <section className="bg-ink-800 py-20 sm:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
-        <Section className="relative">
-          <blockquote className="max-w-2xl mx-auto text-center">
-            <p className="text-xl sm:text-2xl font-medium text-white leading-snug text-balance">
+      <Section className="py-16 sm:py-20">
+        <div className="relative rounded-3xl bg-paper-2 border border-mist overflow-hidden px-6 py-16">
+          <div className="absolute inset-0 grid-backdrop-light opacity-70" />
+          <span aria-hidden="true" className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-mono-num text-[6rem] leading-none text-electric-dim select-none">
+            &rdquo;
+          </span>
+          <blockquote className="relative max-w-2xl mx-auto text-center">
+            <p className="text-xl sm:text-2xl font-medium text-ink-800 leading-snug text-balance">
               &ldquo;{ADP_QUOTE.quote}&rdquo;
             </p>
-            <footer className="mt-4 text-sm text-white/50">
-              <span className="font-semibold text-white/80">{ADP_QUOTE.author}</span>, {ADP_QUOTE.role} — {ADP_QUOTE.source}
+            <footer className="mt-4 text-sm text-slate-2">
+              <span className="font-semibold text-slate">{ADP_QUOTE.author}</span>, {ADP_QUOTE.role} — {ADP_QUOTE.source}
             </footer>
           </blockquote>
-        </Section>
-      </section>
+        </div>
+      </Section>
 
       <Section className="py-20 sm:py-24 text-center">
         <p className="text-slate">

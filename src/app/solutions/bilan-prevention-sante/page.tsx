@@ -35,7 +35,7 @@ export default function BPSPage() {
     <>
       <PageHero
         kicker="Solution n°1 — BPS"
-        title={<>Le bilan de prévention santé : <span className="text-electric-light">un checkup 360° en 2h30.</span></>}
+        title={<>Le bilan de prévention santé : <span className="text-electric-2">un checkup 360° en 2h30.</span></>}
         lead="Un dispositif pensé pour les entreprises — et un vrai bénéfice pour chaque salarié : 8 fonctions vitales explorées sur site, en 2h30, sans rupture d'activité."
         crumb={[{ label: 'Nos solutions', href: '/solutions' }, { label: 'Bilan de prévention santé', href: '/solutions/bilan-prevention-sante' }]}
         video="/videos/bps.mp4"
@@ -69,14 +69,14 @@ export default function BPSPage() {
       </Section>
 
       {/* Body map */}
-      <section className="bg-ink-800 py-20 sm:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
+      <section className="bg-paper-2 py-20 sm:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
-          <Kicker dark>Examens couverts</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-10 max-w-2xl text-balance">
+          <Kicker>Examens couverts</Kicker>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
             8 fonctions vitales explorées en un seul parcours.
           </h2>
-          <BodyMap dark exams={BPS_ONLY_EXAMS} image="/body/body.png" />
+          <BodyMap exams={BPS_ONLY_EXAMS} image="/body/body.png" />
         </Section>
       </section>
 
@@ -98,24 +98,21 @@ export default function BPSPage() {
       </Section>
 
       {/* Client results */}
-      <section className="bg-ink-800 py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" />
-        <Section className="relative">
-          <Kicker dark>Déjà déployé</Kicker>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-10 max-w-2xl text-balance">
-            Un succès immédiat chez chaque nouveau client.
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-5">
-            {adpRefs.map((c) => (
-              <ClientRefCard key={c.name} c={c} />
-            ))}
-          </div>
-          <p className="mt-8 text-white/50 text-sm max-w-xl">
-            2 prix reçus en 2025 pour le centre de bilan de prévention santé du Groupe ADP : Médaille d&rsquo;or
-            Projet RH d&rsquo;envergure (Républik RH) et Trophée Or « Bilan et prévention santé » (Groupe RH&M).
-          </p>
-        </Section>
-      </section>
+      <Section className="py-20 sm:py-28">
+        <Kicker>Déjà déployé</Kicker>
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+          Un succès immédiat chez chaque nouveau client.
+        </h2>
+        <div className="grid sm:grid-cols-3 gap-5">
+          {adpRefs.map((c) => (
+            <ClientRefCard key={c.name} c={c} />
+          ))}
+        </div>
+        <p className="mt-8 text-slate-2 text-sm max-w-xl">
+          2 prix reçus en 2025 pour le centre de bilan de prévention santé du Groupe ADP : Médaille d&rsquo;or
+          Projet RH d&rsquo;envergure (Républik RH) et Trophée Or « Bilan et prévention santé » (Groupe RH&M).
+        </p>
+      </Section>
 
       <Section className="py-20 sm:py-28">
         <div className="grid sm:grid-cols-3 gap-5">
