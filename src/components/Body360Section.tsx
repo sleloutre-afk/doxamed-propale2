@@ -26,8 +26,9 @@ export default function Body360Section({
   dark?: boolean
   exams: Exam[]
   image?: string
-  ctaHref: string
-  ctaLabel: string
+  /** Optional CTA below the detail card — omit for sections that don't need one. */
+  ctaHref?: string
+  ctaLabel?: string
   /** Kicker / heading / lead paragraph for the left column. */
   children: React.ReactNode
 }) {
@@ -38,14 +39,16 @@ export default function Body360Section({
       <div>
         {children}
         <BodyMapDetail dark={dark} exams={exams} activeExam={activeExam} activeIndex={activeIndex} setActive={setActive} className="mt-8" />
-        <div className="mt-6">
-          <Link
-            href={ctaHref}
-            className="inline-block px-6 py-3.5 rounded-full text-sm font-semibold bg-electric text-white hover:bg-electric-2 transition-colors"
-          >
-            {ctaLabel}
-          </Link>
-        </div>
+        {ctaHref && ctaLabel && (
+          <div className="mt-6">
+            <Link
+              href={ctaHref}
+              className="inline-block px-6 py-3.5 rounded-full text-sm font-semibold bg-electric text-white hover:bg-electric-2 transition-colors"
+            >
+              {ctaLabel}
+            </Link>
+          </div>
+        )}
       </div>
       <BodyMapDiagram dark={dark} image={image} points={points} active={active} setActive={setActive} />
     </div>

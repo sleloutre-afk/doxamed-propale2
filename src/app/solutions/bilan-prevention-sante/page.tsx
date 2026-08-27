@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageHero, Section, Kicker, StatStrip, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
-import BodyMap from '@/components/BodyMap'
+import Body360Section from '@/components/Body360Section'
 import PatientJourney from '@/components/PatientJourney'
 import { ClientRefCard } from '@/components/Cards'
 import Icon from '@/components/Icons'
@@ -78,13 +78,12 @@ export default function BPSPage() {
         <div className="absolute inset-0 grid-backdrop-light" />
         <Section className="relative">
           <Reveal>
-            <Kicker>Examens couverts</Kicker>
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
-              8 fonctions vitales explorées en un seul parcours.
-            </h2>
-          </Reveal>
-          <Reveal from="scale" delay={100}>
-            <BodyMap exams={BPS_ONLY_EXAMS} image="/body/body.png" />
+            <Body360Section exams={[...BPS_ONLY_EXAMS]} image="/body/body.png">
+              <Kicker>Examens couverts</Kicker>
+              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-800 mb-10 max-w-2xl text-balance">
+                8 fonctions vitales explorées en un seul parcours.
+              </h2>
+            </Body360Section>
           </Reveal>
         </Section>
       </section>
