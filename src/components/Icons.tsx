@@ -62,14 +62,15 @@ const paths: Record<string, React.ReactNode> = {
     <>
       <circle cx="12" cy="7" r="3.2" strokeWidth="1.6" />
       <path d="M5 21v-2a7 7 0 0 1 14 0v2" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M12 12v4M10 14h4" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M12 11.5v5M9.5 14h5" strokeWidth="2.2" strokeLinecap="round" />
     </>
   ),
   doctor: (
     <>
       <circle cx="12" cy="6.5" r="3" strokeWidth="1.6" />
       <path d="M6 21v-3a6 6 0 0 1 12 0v3" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M9 12.5c0 2 1.3 3 3 3s3-1 3-3" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M9 13c0 2.2 1.3 3.5 3 3.5s3-1.3 3-3.5" strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx="12" cy="17.3" r="1.1" fill="currentColor" strokeWidth="0" />
     </>
   ),
   report: (
