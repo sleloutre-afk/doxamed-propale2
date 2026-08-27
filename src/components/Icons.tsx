@@ -67,10 +67,10 @@ const paths: Record<string, React.ReactNode> = {
   ),
   doctor: (
     <>
-      <circle cx="12" cy="6.5" r="3" strokeWidth="1.6" />
-      <path d="M6 21v-3a6 6 0 0 1 12 0v3" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M9 13c0 2.2 1.3 3.5 3 3.5s3-1.3 3-3.5" strokeWidth="2.2" strokeLinecap="round" />
-      <circle cx="12" cy="17.3" r="1.1" fill="currentColor" strokeWidth="0" />
+      <rect x="4" y="4" width="16" height="12" rx="1.5" strokeWidth="1.6" />
+      <path d="M9 20.5h6M12 16v4.5" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="12" cy="9.3" r="2.1" strokeWidth="1.6" />
+      <path d="M8.6 14c0-1.8 1.5-2.6 3.4-2.6s3.4.8 3.4 2.6" strokeWidth="1.6" strokeLinecap="round" />
     </>
   ),
   report: (

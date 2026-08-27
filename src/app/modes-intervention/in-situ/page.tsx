@@ -3,8 +3,17 @@ import Link from 'next/link'
 import { PageHero, Section, Kicker, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import Reveal from '@/components/Reveal'
 import { METIERS } from '@/lib/content'
+
+const PROMISE = [
+  { icon: 'calendar', label: 'Prise de rendez-vous en ligne' },
+  { picto: 'operateur', label: "Chef d'opération sur place" },
+  { picto: 'infirmiere', label: 'Infirmier diplômé d’État' },
+  { picto: 'teleconsultation', label: 'Médecin à distance' },
+  { icon: 'report', label: 'Rapport complet et recommandations' },
+] as const
 
 export const metadata: Metadata = {
   title: 'In situ — un espace santé dans vos locaux',
@@ -42,18 +51,12 @@ export default function InSituPage() {
             <div className="rounded-2xl border border-mist bg-white p-7 sm:p-8">
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-electric-2 mb-5">Ce que nous apportons</p>
               <ul className="space-y-4">
-                {[
-                  ['calendar', 'Prise de rendez-vous en ligne'],
-                  ['users', "Chef d'opération sur place"],
-                  ['nurse', 'Infirmier diplômé d’État'],
-                  ['doctor', 'Médecin à distance'],
-                  ['report', 'Rapport complet et recommandations'],
-                ].map(([icon, label]) => (
-                  <li key={label} className="flex items-center gap-3">
+                {PROMISE.map((item) => (
+                  <li key={item.label} className="flex items-center gap-3">
                     <span className="w-9 h-9 rounded-full bg-electric-dim text-electric-2 flex items-center justify-center shrink-0">
-                      <Icon name={icon as never} className="w-4 h-4" />
+                      {'picto' in item ? <Picto name={item.picto} className="w-4 h-4" /> : <Icon name={item.icon} className="w-4 h-4" />}
                     </span>
-                    <span className="text-sm text-ink-800">{label}</span>
+                    <span className="text-sm text-ink-800">{item.label}</span>
                   </li>
                 ))}
               </ul>

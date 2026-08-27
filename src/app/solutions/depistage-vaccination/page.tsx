@@ -76,7 +76,7 @@ export default function DepistagePage() {
                   { icon: 'users', title: 'Prise de mesure', detail: 'Points clés dessinés sur le corps' },
                   { icon: 'target', title: 'Scanner', detail: 'Analyse posturale 3D' },
                   { icon: 'report', title: 'Analyse asynchrone', detail: 'Résultat du scanner' },
-                  { icon: 'doctor', title: 'Téléconsultation médicale', optional: true },
+                  { picto: 'teleconsultation', title: 'Téléconsultation médicale', optional: true },
                 ]}
               />
             </Reveal>
@@ -88,7 +88,7 @@ export default function DepistagePage() {
                   { icon: 'file', title: 'Questionnaire' },
                   { icon: 'pulse', title: 'Prise de constantes' },
                   { icon: 'drop', title: 'Trod', detail: 'Test rapide d’orientation diagnostique' },
-                  { icon: 'doctor', title: 'Téléconsultation médicale', optional: true },
+                  { picto: 'teleconsultation', title: 'Téléconsultation médicale', optional: true },
                 ]}
               />
             </Reveal>

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { PageHero, Section, Kicker, StatStrip, CTABanner } from '@/components/ui'
 import ContactCTAButton from '@/components/ContactCTAButton'
 import Icon from '@/components/Icons'
+import Picto from '@/components/pictos'
 import Reveal from '@/components/Reveal'
 import { MODES } from '@/lib/content'
 
@@ -13,12 +14,12 @@ export const metadata: Metadata = {
 
 const SERVICES = [
   {
-    icon: 'doctor',
+    picto: 'teleconsultation',
     name: 'Télémédecine',
     detail: 'Téléconsultation et téléexpertise avec des médecins généralistes et spécialistes.',
   },
   {
-    icon: 'nurse',
+    picto: 'infirmiere',
     name: 'Soins infirmiers',
     detail: 'Prises de sang, injections, pansements, perfusions et suivi préventif, sur rendez-vous.',
   },
@@ -66,7 +67,7 @@ export default function AccesAuxSoinsPage() {
           {SERVICES.map((s, i) => (
             <Reveal key={s.name} delay={(i % 4) * 80} className={`relative flex flex-col h-full pt-7 ${i % 2 === 1 ? 'sm:mt-8' : ''}`}>
               <div className="absolute top-0 left-7 z-10 w-14 h-14 rounded-full ring-4 ring-paper bg-white border border-mist shadow-md flex items-center justify-center">
-                <Icon name={s.icon} className="w-6 h-6 text-electric-2" />
+                {'picto' in s ? <Picto name={s.picto} className="w-6 h-6 text-electric-2" /> : <Icon name={s.icon} className="w-6 h-6 text-electric-2" />}
               </div>
               <div className="relative flex flex-col flex-1 rounded-2xl border border-mist bg-white p-7 pt-11 overflow-hidden">
                 <div className="absolute inset-0 grid-backdrop-light pointer-events-none" />

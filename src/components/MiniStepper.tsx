@@ -1,6 +1,7 @@
 import Icon from './Icons'
+import Picto, { type PictoKey } from './pictos'
 
-export type MiniStep = { icon: string; title: string; detail?: string; optional?: boolean }
+export type MiniStep = { icon?: string; picto?: PictoKey; title: string; detail?: string; optional?: boolean }
 
 export default function MiniStepper({ steps, duration }: { steps: MiniStep[]; duration?: string }) {
   return (
@@ -19,7 +20,7 @@ export default function MiniStepper({ steps, duration }: { steps: MiniStep[]; du
                 s.optional ? 'bg-white border-mist text-slate-2' : 'bg-electric-dim border-electric text-electric-2'
               }`}
             >
-              <Icon name={s.icon as never} className="w-5 h-5" />
+              {s.picto ? <Picto name={s.picto} className="w-5 h-5" /> : <Icon name={s.icon as never} className="w-5 h-5" />}
             </div>
             <div>
               <p className="text-sm font-semibold text-ink-800">
