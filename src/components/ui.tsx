@@ -61,7 +61,7 @@ export function PageHero({
             ))}
           </div>
         )}
-        <div className={hasMedia ? 'grid lg:grid-cols-[1fr_0.85fr] gap-10 lg:gap-14 items-center' : ''}>
+        <div className={hasMedia ? 'grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-center' : ''}>
           <div>
             <Kicker>{kicker}</Kicker>
             <h1 className={`text-4xl sm:text-5xl lg:text-[3.2rem] font-semibold tracking-tight leading-[1.05] text-ink-800 text-balance ${hasMedia ? '' : 'max-w-3xl'}`}>
