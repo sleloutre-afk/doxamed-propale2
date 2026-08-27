@@ -132,7 +132,7 @@ export function BodyMapDiagram({
   setActive: (key: string) => void
 }) {
   return (
-    <div className="relative mx-auto w-full max-w-[560px] aspect-[4/5]">
+    <div className="relative mx-auto w-full max-w-[420px] aspect-[4/5]">
       {/* Leader lines from each anatomical point out to its orbit picto */}
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
         {points.map(({ exam, dotX, dotY, pillX, pillY }) => (
