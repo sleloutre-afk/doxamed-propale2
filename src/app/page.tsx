@@ -36,7 +36,7 @@ export default function Home() {
             <div>
               <Kicker>Expert de la prévention santé par l&rsquo;innovation</Kicker>
               <div className="flex items-center gap-4 sm:gap-5">
-                <LogoShape className="h-14 sm:h-16 w-auto shrink-0 text-electric animate-fade-up" />
+                <LogoShape className="h-20 sm:h-24 w-auto shrink-0 text-electric animate-fade-up" />
                 <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] font-semibold tracking-tight text-ink-800 text-balance animate-fade-up">
                   La santé <span className="text-electric-2">pour tous.</span>
                   <br />
